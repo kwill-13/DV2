@@ -1,0 +1,175 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "How big are new schools?",
+    "subtitle": "Spread of school sizes in 2025. Higher curve = more schools of that size. Dashed line = typical (middle) size"
+  },
+  "data": {
+    "url": "data/schools_web.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "enrolments": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "calculate": "datum.status === 'New since 2015' ? 'Opened since 2015' : 'Already open in 2015'",
+      "as": "group"
+    }
+  ],
+  "facet": {
+    "row": {
+      "field": "type",
+      "type": "nominal",
+      "title": null,
+      "sort": [
+        "Primary",
+        "Secondary",
+        "Combined"
+      ],
+      "header": {
+        "labelOrient": "left",
+        "labelAngle": 0,
+        "labelAlign": "left",
+        "labelFontSize": 13,
+        "labelFontWeight": 600
+      }
+    }
+  },
+  "spacing": 6,
+  "resolve": {
+    "scale": {
+      "y": "independent"
+    }
+  },
+  "spec": {
+    "width": 560,
+    "height": 80,
+    "layer": [
+      {
+        "transform": [
+          {
+            "density": "enrolments",
+            "groupby": [
+              "group"
+            ],
+            "extent": [
+              0,
+              2000
+            ],
+            "steps": 150,
+            "as": [
+              "size",
+              "density"
+            ]
+          }
+        ],
+        "mark": {
+          "type": "area",
+          "interpolate": "monotone",
+          "fillOpacity": 0.55,
+          "strokeWidth": 1.5,
+          "line": true
+        },
+        "encoding": {
+          "x": {
+            "field": "size",
+            "type": "quantitative",
+            "title": "Students at the school (2025)",
+            "scale": {
+              "domain": [
+                0,
+                2000
+              ]
+            }
+          },
+          "y": {
+            "field": "density",
+            "type": "quantitative",
+            "axis": null,
+            "stack": null
+          },
+          "color": {
+            "field": "group",
+            "type": "nominal",
+            "title": null,
+            "scale": {
+              "domain": [
+                "Already open in 2015",
+                "Opened since 2015"
+              ],
+              "range": [
+                "#a9a8a3",
+                "#3b2c8f"
+              ]
+            },
+            "legend": {
+              "orient": "top",
+              "labelLimit": 0
+            }
+          }
+        }
+      },
+      {
+        "transform": [
+          {
+            "aggregate": [
+              {
+                "op": "median",
+                "field": "enrolments",
+                "as": "median"
+              },
+              {
+                "op": "count",
+                "as": "schools"
+              }
+            ],
+            "groupby": [
+              "group"
+            ]
+          }
+        ],
+        "mark": {
+          "type": "rule",
+          "strokeDash": [
+            4,
+            3
+          ],
+          "strokeWidth": 1.5
+        },
+        "encoding": {
+          "x": {
+            "field": "median",
+            "type": "quantitative"
+          },
+          "color": {
+            "field": "group",
+            "type": "nominal"
+          },
+          "tooltip": [
+            {
+              "field": "group",
+              "title": "Schools"
+            },
+            {
+              "field": "schools",
+              "title": "Number of schools"
+            },
+            {
+              "field": "median",
+              "title": "Typical (middle) size",
+              "format": ",.0f"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}
