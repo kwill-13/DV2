@@ -1,0 +1,81 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {"text": "Where the 410,000 extra students came from",
+            "subtitle": "Change in school students by state, 2015 to 2025. Each bar starts where the last one ended"},
+  "width": "container",
+  "height": 320,
+  "config": {"view": {"stroke": null}},
+  "data": {"url": "data/state_summary_2025.csv",
+           "format": {"type": "csv", "parse": {"students_2015": "number", "students_2025": "number"}}},
+  "encoding": {
+    "x": {"field": "label", "type": "ordinal", "title": null, "sort": null,
+          "scale": {"domain": ["Vic", "Qld", "NSW", "WA", "SA", "ACT", "Tas", "NT", "Australia"]},
+          "axis": {"labelAngle": 0, "labelFontWeight": 600}}
+  },
+  "layer": [
+    {
+      "transform": [
+        {"calculate": "datum.students_2025 - datum.students_2015", "as": "change"},
+        {"window": [{"op": "sum", "field": "change", "as": "end"}],
+         "sort": [{"field": "change", "order": "descending"}], "frame": [null, 0]},
+        {"calculate": "datum.end - datum.change", "as": "start"},
+        {"calculate": "datum.state_abbr", "as": "label"},
+        {"calculate": "datum.change >= 0 ? 'Added students' : 'Lost students'", "as": "kind"},
+        {"calculate": "max(datum.start, datum.end)", "as": "top"},
+        {"calculate": "(datum.change >= 0 ? '+' : '−') + format(abs(datum.change) / 1000, ',.0f') + 'k'", "as": "change_label"}
+      ],
+      "layer": [
+        {
+          "mark": {"type": "bar", "width": {"band": 0.72}, "cornerRadius": 2},
+          "encoding": {
+            "y": {"field": "start", "type": "quantitative", "title": "Extra students since 2015",
+                  "axis": {"format": "~s"}},
+            "y2": {"field": "end"},
+            "color": {"field": "kind", "type": "nominal", "title": null,
+                      "scale": {"domain": ["Added students", "Lost students", "Australia total"],
+                                "range": ["#3b2c8f", "#c43c3c", "#52514e"]},
+                      "legend": {"orient": "top"}},
+            "tooltip": [{"field": "state", "title": "State"},
+                        {"field": "students_2015", "type": "quantitative", "title": "Students 2015", "format": ","},
+                        {"field": "students_2025", "type": "quantitative", "title": "Students 2025", "format": ","},
+                        {"field": "change", "type": "quantitative", "title": "Change", "format": "+,"}]
+          }
+        },
+        {
+          "mark": {"type": "text", "baseline": "bottom", "dy": -4, "fontSize": 12, "fontWeight": 600},
+          "encoding": {"y": {"field": "top", "type": "quantitative"}, "text": {"field": "change_label"}}
+        }
+      ]
+    },
+    {
+      "transform": [
+        {"aggregate": [{"op": "sum", "field": "students_2015", "as": "students_2015"},
+                       {"op": "sum", "field": "students_2025", "as": "students_2025"}]},
+        {"calculate": "datum.students_2025 - datum.students_2015", "as": "change"},
+        {"calculate": "'Australia'", "as": "label"},
+        {"calculate": "'Australia'", "as": "state"},
+        {"calculate": "'Australia total'", "as": "kind"},
+        {"calculate": "0", "as": "start"},
+        {"calculate": "'+' + format(datum.change / 1000, ',.0f') + 'k'", "as": "change_label"}
+      ],
+      "layer": [
+        {
+          "mark": {"type": "bar", "width": {"band": 0.72}, "cornerRadius": 2},
+          "encoding": {
+            "y": {"field": "start", "type": "quantitative"},
+            "y2": {"field": "change"},
+            "color": {"field": "kind", "type": "nominal"},
+            "tooltip": [{"field": "state", "title": "State"},
+                        {"field": "students_2015", "type": "quantitative", "title": "Students 2015", "format": ","},
+                        {"field": "students_2025", "type": "quantitative", "title": "Students 2025", "format": ","},
+                        {"field": "change", "type": "quantitative", "title": "Change", "format": "+,"}]
+          }
+        },
+        {
+          "mark": {"type": "text", "baseline": "bottom", "dy": -4, "fontSize": 12, "fontWeight": 700},
+          "encoding": {"y": {"field": "change", "type": "quantitative"}, "text": {"field": "change_label"}}
+        }
+      ]
+    }
+  ]
+}

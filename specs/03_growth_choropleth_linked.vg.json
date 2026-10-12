@@ -1,0 +1,157 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "params": [
+    {
+      "name": "metric",
+      "value": "All schools",
+      "bind": {"input": "select", "options": ["All schools", "Government", "Catholic", "Independent"], "name": "Sector: "}
+    },
+    {
+      "name": "from_year",
+      "value": 2015,
+      "bind": {"input": "range", "min": 2006, "max": 2024, "step": 1, "name": "Compare 2025 with: "}
+    }
+  ],
+  "hconcat": [
+    {
+      "title": {
+        "text": {"expr": "'Change in students, ' + from_year + ' to 2025'"},
+        "subtitle": {"expr": "(metric === 'All schools' ? 'All schools' : metric + ' schools') + '. Click a state to see its sectors'"}
+      },
+      "width": 430,
+      "height": 380,
+      "projection": {"type": "conicEqualArea", "parallels": [-18, -36], "rotate": [-134, 0, 0]},
+      "data": {
+        "url": "data/sector_share_by_state_year.csv",
+        "format": {"type": "csv", "parse": {"year": "number", "students": "number"}}
+      },
+      "transform": [
+        {"filter": "(datum.year === from_year || datum.year === 2025) && (metric === 'All schools' || datum.sector === metric)"},
+        {"calculate": "datum.year === from_year ? datum.students : 0", "as": "s_from"},
+        {"calculate": "datum.year === 2025 ? datum.students : 0", "as": "s_to"},
+        {
+          "aggregate": [
+            {"op": "sum", "field": "s_from", "as": "students_from"},
+            {"op": "sum", "field": "s_to", "as": "students_2025"}
+          ],
+          "groupby": ["state", "state_abbr"]
+        },
+        {"calculate": "(datum.students_2025 / datum.students_from - 1) * 100", "as": "growth"},
+        {"calculate": "(datum.growth > 0 ? '+' : '') + format(datum.growth, '.0f') + '%'", "as": "growth_label"},
+        {
+          "lookup": "state",
+          "from": {"data": {"url": "data/state_labels.csv"}, "key": "state", "fields": ["label_lon", "label_lat"]}
+        },
+        {
+          "lookup": "state",
+          "from": {
+            "data": {
+              "url": "data/geo/australia_states_detail.topojson",
+              "format": {"type": "topojson", "feature": "states"}
+            },
+            "key": "id"
+          },
+          "as": "geo"
+        }
+      ],
+      "layer": [
+        {
+          "params": [{"name": "pick", "select": {"type": "point", "fields": ["state"]}}],
+          "mark": {"type": "geoshape", "stroke": "#ffffff", "strokeWidth": 1, "cursor": "pointer"},
+          "encoding": {
+            "shape": {"field": "geo", "type": "geojson"},
+            "color": {
+              "field": "growth",
+              "type": "quantitative",
+              "title": "Change in students (%)",
+              "scale": {
+                "type": "threshold",
+                "domain": [-10, 0, 10, 20, 40],
+                "range": ["#b2182b", "#ef8a62", "#e4e0ef", "#b2abd2", "#8073ac", "#4b2384"]
+              },
+              "legend": {"orient": "bottom", "direction": "horizontal", "gradientLength": 300, "titleLimit": 0}
+            },
+            "opacity": {"condition": {"param": "pick", "value": 1}, "value": 0.35},
+            "tooltip": [
+              {"field": "state", "title": "State"},
+              {"field": "students_from", "type": "quantitative", "title": "Students (start year)", "format": ","},
+              {"field": "students_2025", "type": "quantitative", "title": "Students (2025)", "format": ","},
+              {"field": "growth", "type": "quantitative", "title": "Change (%)", "format": "+.1f"}
+            ]
+          }
+        },
+        {
+          "mark": {"type": "text", "fontSize": 12, "fontWeight": 700, "dy": 7},
+          "encoding": {
+            "longitude": {"field": "label_lon", "type": "quantitative"},
+            "latitude": {"field": "label_lat", "type": "quantitative"},
+            "text": {"field": "growth_label"},
+            "color": {
+              "condition": {"test": "datum.growth >= 20 || datum.growth < -10", "value": "#ffffff"},
+              "value": "#16150f"
+            }
+          }
+        },
+        {
+          "mark": {"type": "text", "fontSize": 10, "dy": -7},
+          "encoding": {
+            "longitude": {"field": "label_lon", "type": "quantitative"},
+            "latitude": {"field": "label_lat", "type": "quantitative"},
+            "text": {"field": "state_abbr"},
+            "color": {
+              "condition": {"test": "datum.growth >= 20 || datum.growth < -10", "value": "#ffffff"},
+              "value": "#16150f"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "title": {
+        "text": {"expr": "length(data('pick_store')) ? 'Students in ' + pick.state + ' by sector' : 'Students in Australia by sector'"},
+        "subtitle": "Dashed line = the year you are comparing with"
+      },
+      "width": 380,
+      "height": 300,
+      "data": {
+        "url": "data/sector_share_by_state_year.csv",
+        "format": {"type": "csv", "parse": {"year": "number", "students": "number"}}
+      },
+      "layer": [
+        {
+          "transform": [
+            {"filter": {"param": "pick"}},
+            {"aggregate": [{"op": "sum", "field": "students", "as": "students"}], "groupby": ["year", "sector"]},
+            {"calculate": "indexof(['Government', 'Catholic', 'Independent'], datum.sector)", "as": "s_order"}
+          ],
+          "mark": {"type": "area", "opacity": 0.9},
+          "encoding": {
+            "x": {"field": "year", "type": "quantitative", "title": null, "axis": {"format": "d", "tickCount": 5, "grid": false}},
+            "y": {"field": "students", "type": "quantitative", "stack": "zero", "title": null, "axis": {"format": "~s"}},
+            "color": {
+              "field": "sector",
+              "type": "nominal",
+              "title": null,
+              "scale": {"domain": ["Government", "Catholic", "Independent"], "range": ["#2a78d6", "#eb6834", "#1baf7a"]},
+              "legend": {"orient": "top"}
+            },
+            "order": {"field": "s_order", "type": "quantitative"},
+            "tooltip": [
+              {"field": "year", "type": "ordinal", "title": "Year"},
+              {"field": "sector", "title": "Sector"},
+              {"field": "students", "type": "quantitative", "title": "Students", "format": ","}
+            ]
+          }
+        },
+        {
+          "data": {"values": [{}]},
+          "mark": {"type": "rule", "strokeDash": [4, 3], "color": "#16150f", "strokeWidth": 1.5},
+          "encoding": {"x": {"datum": {"expr": "from_year"}, "type": "quantitative"}}
+        }
+      ]
+    }
+  ],
+  "spacing": 40,
+  "resolve": {"scale": {"color": "independent"}, "legend": {"color": "independent"}},
+  "config": {"view": {"stroke": null}}
+}
