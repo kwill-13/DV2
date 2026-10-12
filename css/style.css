@@ -1,2 +1,8 @@
 body { font-family: system-ui, sans-serif; max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 .vis { width: 100%; margin: 24px 0 48px; }
+/* text beside chart: lead on the left, chart on the right */
+.two { display: grid; grid-template-columns: 5fr 7fr; gap: 36px; align-items: center; margin: 24px 0 48px; }
+.two > * { min-width: 0; }
+.two .vis { margin: 0; }
+.two .text p:first-child { margin-top: 0; }
+@media (max-width: 860px) { .two { grid-template-columns: 1fr; } }

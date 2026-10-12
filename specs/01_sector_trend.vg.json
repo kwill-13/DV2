@@ -106,12 +106,12 @@
     {
       "data": {
         "values": [
-          {"year": 2025, "y": 8, "align": "right", "sector": "Government", "label": "Government enrolments level off after 2020"},
-          {"year": 2007, "y": 50, "align": "left", "sector": "Independent", "label": "Independent schools grew fastest: +62% since 2006"}
+          {"year": 2025, "y": 7, "align": "right", "sector": "Government", "label": "Government enrolments\nlevel off after 2020"},
+          {"year": 2007, "y": 54, "align": "left", "sector": "Independent", "label": "Independent schools grew\nfastest: +62% since 2006"}
         ]
       },
       "transform": [{"filter": "view !== 'Number of students'"}],
-      "mark": {"type": "text", "align": {"expr": "datum.align"}, "fontSize": 12, "fontStyle": "italic"},
+      "mark": {"type": "text", "align": {"expr": "datum.align"}, "fontSize": 12, "fontStyle": "italic", "lineBreak": "\n", "baseline": "top"},
       "encoding": {
         "x": {"field": "year", "type": "quantitative"},
         "y": {"field": "y", "type": "quantitative"},
