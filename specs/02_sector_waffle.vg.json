@@ -1,8 +1,13 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {"text": "Out of every 100 students", "subtitle": "One square = 1% of all school students in that year"},
-  "data": {"url": "data/enrolments_national_by_sector.csv",
-           "format": {"type": "csv", "parse": {"year": "number", "students": "number"}}},
+  "width": "container",
+  "height": 360,
+  "config": {"view": {"stroke": null}},
+  "data": {
+    "url": "data/enrolments_national_by_sector.csv",
+    "format": {"type": "csv", "parse": {"year": "number", "students": "number"}}
+  },
   "transform": [
     {"filter": "datum.year === 2006 || datum.year === 2025"},
     {"joinaggregate": [{"op": "sum", "field": "students", "as": "total"}], "groupby": ["year"]},
@@ -11,29 +16,41 @@
     {"calculate": "indexof(['Government', 'Catholic', 'Independent'], datum.sector)", "as": "s_order"},
     {"calculate": "sequence(0, datum.units)", "as": "cell"},
     {"flatten": ["cell"]},
-    {"window": [{"op": "row_number", "as": "pos"}], "groupby": ["year"],
-     "sort": [{"field": "s_order"}, {"field": "cell"}]},
-    {"calculate": "(datum.pos - 1) % 10", "as": "col"},
-    {"calculate": "floor((datum.pos - 1) / 10)", "as": "row"}
+    {"window": [{"op": "row_number", "as": "pos"}], "groupby": ["year"], "sort": [{"field": "s_order"}, {"field": "cell"}]},
+    {"calculate": "floor((datum.pos - 1) / 4)", "as": "col"},
+    {"calculate": "(datum.pos - 1) % 4", "as": "row"},
+    {"calculate": "(datum.year === 2006 ? 0 : 5) + datum.row", "as": "ykey"}
   ],
-  "facet": {"column": {"field": "year", "type": "ordinal", "title": null,
-                       "header": {"labelFontSize": 16, "labelFontWeight": 600}}},
-  "spacing": 36,
-  "config": {"view": {"stroke": null}},
-  "spec": {
-    "width": 262,
-    "height": 262,
-    "mark": {"type": "rect", "stroke": "#ffffff", "strokeWidth": 2.5, "cornerRadius": 2},
-    "encoding": {
-      "x": {"field": "col", "type": "ordinal", "axis": null},
-      "y": {"field": "row", "type": "ordinal", "axis": null},
-      "color": {"field": "sector", "type": "nominal", "title": null,
-                "scale": {"domain": ["Government", "Catholic", "Independent"],
-                          "range": ["#2a78d6", "#eb6834", "#1baf7a"]},
-                "legend": {"orient": "top", "symbolType": "square"}},
-      "tooltip": [{"field": "year", "type": "ordinal"}, {"field": "sector"},
-                  {"field": "share", "type": "quantitative", "title": "Share (%)", "format": ".1f"},
-                  {"field": "students", "type": "quantitative", "format": ","}]
-    }
+  "mark": {"type": "square", "opacity": 1, "size": {"expr": "pow(min(width / 25, height / 9) * 0.86, 2)"}},
+  "encoding": {
+    "x": {"field": "col", "type": "ordinal", "axis": null},
+    "y": {
+      "field": "ykey",
+      "type": "ordinal",
+      "title": null,
+      "scale": {"domain": [0, 1, 2, 3, 4, 5, 6, 7, 8]},
+      "axis": {
+        "labelExpr": "datum.value === 0 ? '2006' : datum.value === 5 ? '2025' : ''",
+        "labelFontSize": 15,
+        "labelFontWeight": 600,
+        "labelBaseline": "top",
+        "labelPadding": 10,
+        "ticks": false,
+        "domain": false
+      }
+    },
+    "color": {
+      "field": "sector",
+      "type": "nominal",
+      "title": null,
+      "scale": {"domain": ["Government", "Catholic", "Independent"], "range": ["#2a78d6", "#eb6834", "#1baf7a"]},
+      "legend": {"orient": "top", "symbolType": "square"}
+    },
+    "tooltip": [
+      {"field": "year", "type": "ordinal", "title": "Year"},
+      {"field": "sector", "title": "Sector"},
+      {"field": "share", "type": "quantitative", "title": "Share (%)", "format": ".1f"},
+      {"field": "students", "type": "quantitative", "title": "Students", "format": ","}
+    ]
   }
 }
