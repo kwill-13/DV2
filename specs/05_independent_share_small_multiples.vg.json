@@ -6,14 +6,29 @@
   },
   "data": {
     "url": "data/sector_share_by_state_year.csv",
-    "format": {"type": "csv", "parse": {"year": "number", "share_pct": "number", "students": "number"}}
+    "format": {
+      "type": "csv",
+      "parse": {
+        "year": "number",
+        "share_pct": "number",
+        "students": "number"
+      }
+    }
   },
   "transform": [
-    {"filter": "datum.sector === 'Independent' && indexof([2006, 2010, 2015, 2020, 2025], datum.year) >= 0"},
+    {
+      "filter": "datum.sector === 'Independent' && indexof([2006, 2010, 2015, 2020, 2025], datum.year) >= 0"
+    },
     {
       "lookup": "state",
       "from": {
-        "data": {"url": "data/geo/australia_states.topojson", "format": {"type": "topojson", "feature": "states"}},
+        "data": {
+          "url": "data/geo/australia_states.topojson",
+          "format": {
+            "type": "topojson",
+            "feature": "states"
+          }
+        },
         "key": "id"
       },
       "as": "geo"
@@ -24,40 +39,121 @@
       "field": "year",
       "type": "ordinal",
       "title": null,
-      "header": {"labelFontSize": 15, "labelFontWeight": 600, "labelPadding": 4}
+      "header": {
+        "labelFontSize": 15,
+        "labelFontWeight": 600,
+        "labelPadding": 4
+      }
     }
   },
   "spacing": 8,
   "spec": {
-    "width": 180,
-    "height": 165,
-    "projection": {"type": "conicEqualArea", "parallels": [-18, -36], "rotate": [-134, 0, 0]},
+    "width": 205,
+    "height": 188,
+    "projection": {
+      "type": "conicEqualArea",
+      "parallels": [
+        -18,
+        -36
+      ],
+      "rotate": [
+        -134,
+        0,
+        0
+      ]
+    },
     "params": [
-      {"name": "hl", "select": {"type": "point", "fields": ["state"], "on": "pointerover", "clear": "pointerout"}}
+      {
+        "name": "hl",
+        "select": {
+          "type": "point",
+          "fields": [
+            "state"
+          ],
+          "on": "pointerover",
+          "clear": "pointerout"
+        }
+      }
     ],
-    "mark": {"type": "geoshape"},
+    "mark": {
+      "type": "geoshape"
+    },
     "encoding": {
-      "shape": {"field": "geo", "type": "geojson"},
+      "shape": {
+        "field": "geo",
+        "type": "geojson"
+      },
       "color": {
         "field": "share_pct",
         "type": "quantitative",
         "title": "Students at Independent schools (%)",
         "scale": {
           "type": "threshold",
-          "domain": [12, 14, 16, 18],
-          "range": ["#e5f5ec", "#a8dcc0", "#5fb98f", "#238a5e", "#0b5639"]
+          "domain": [
+            12,
+            14,
+            16,
+            18
+          ],
+          "range": [
+            "#e5f5ec",
+            "#a8dcc0",
+            "#5fb98f",
+            "#238a5e",
+            "#0b5639"
+          ]
         },
-        "legend": {"orient": "top", "direction": "horizontal", "gradientLength": 260, "titleLimit": 0}
+        "legend": {
+          "orient": "top",
+          "direction": "horizontal",
+          "gradientLength": 260,
+          "titleLimit": 0
+        }
       },
-      "stroke": {"condition": {"param": "hl", "empty": false, "value": "#0b0b0b"}, "value": "#ffffff"},
-      "strokeWidth": {"condition": {"param": "hl", "empty": false, "value": 2}, "value": 0.8},
+      "stroke": {
+        "condition": {
+          "param": "hl",
+          "empty": false,
+          "value": "#0b0b0b"
+        },
+        "value": "#ffffff"
+      },
+      "strokeWidth": {
+        "condition": {
+          "param": "hl",
+          "empty": false,
+          "value": 2
+        },
+        "value": 0.8
+      },
       "tooltip": [
-        {"field": "state", "title": "State"},
-        {"field": "year", "type": "ordinal", "title": "Year"},
-        {"field": "share_pct", "type": "quantitative", "title": "Independent share (%)", "format": ".1f"},
-        {"field": "students", "type": "quantitative", "title": "Independent students", "format": ","}
+        {
+          "field": "state",
+          "title": "State"
+        },
+        {
+          "field": "year",
+          "type": "ordinal",
+          "title": "Year"
+        },
+        {
+          "field": "share_pct",
+          "type": "quantitative",
+          "title": "Independent share (%)",
+          "format": ".1f"
+        },
+        {
+          "field": "students",
+          "type": "quantitative",
+          "title": "Independent students",
+          "format": ","
+        }
       ]
     }
   },
-  "config": {"view": {"stroke": null}}
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
 }

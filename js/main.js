@@ -1,4 +1,4 @@
-const opts = { actions: false, renderer: "svg" };
+const opts = { actions: false, renderer: "svg", config: { title: { anchor: "start" } } };
 
 const charts = [
   ["#v1",  "specs/01_sector_trend.vg.json"],
