@@ -18,11 +18,11 @@
   ],
   "facet": {"column": {"field": "year", "type": "ordinal", "title": null,
                        "header": {"labelFontSize": 16, "labelFontWeight": 600}}},
-  "spacing": 48,
+  "spacing": 36,
   "config": {"view": {"stroke": null}},
   "spec": {
-    "width": 220,
-    "height": 220,
+    "width": 262,
+    "height": 262,
     "mark": {"type": "rect", "stroke": "#ffffff", "strokeWidth": 2.5, "cornerRadius": 2},
     "encoding": {
       "x": {"field": "col", "type": "ordinal", "axis": null},
