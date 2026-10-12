@@ -1,0 +1,81 @@
+year,state,sector,remoteness,fte_students,fte_male,fte_female
+2025,Australian Capital Territory,Government,Inner Regional,60.0,30.0,30.0
+2025,Australian Capital Territory,Government,Major City,46044.7,24048.4,21996.3
+2025,Australian Capital Territory,Government,Outer Regional,0.0,0.0,0.0
+2025,Australian Capital Territory,Government,Remote,0.0,0.0,0.0
+2025,Australian Capital Territory,Government,Very Remote,0.0,0.0,0.0
+2025,Australian Capital Territory,Non-Government,Inner Regional,0.0,0.0,0.0
+2025,Australian Capital Territory,Non-Government,Major City,31651.9,15977.0,15674.9
+2025,Australian Capital Territory,Non-Government,Outer Regional,0.0,0.0,0.0
+2025,Australian Capital Territory,Non-Government,Remote,0.0,0.0,0.0
+2025,Australian Capital Territory,Non-Government,Very Remote,0.0,0.0,0.0
+2025,New South Wales,Government,Inner Regional,143546.0,74729.1,68816.9
+2025,New South Wales,Government,Major City,591419.3,308078.5,283340.8
+2025,New South Wales,Government,Outer Regional,35065.8,18012.0,17053.8
+2025,New South Wales,Government,Remote,2615.2,1326.1,1289.1
+2025,New South Wales,Government,Very Remote,731.0,374.0,357.0
+2025,New South Wales,Non-Government,Inner Regional,91939.4,44950.9,46988.5
+2025,New South Wales,Non-Government,Major City,378176.7,187809.8,190366.9
+2025,New South Wales,Non-Government,Outer Regional,12678.2,6204.8,6473.4
+2025,New South Wales,Non-Government,Remote,700.6,353.8,346.8
+2025,New South Wales,Non-Government,Very Remote,185.0,82.0,103.0
+2025,Northern Territory,Government,Inner Regional,0.0,0.0,0.0
+2025,Northern Territory,Government,Major City,0.0,0.0,0.0
+2025,Northern Territory,Government,Outer Regional,17029.4,8766.9,8262.5
+2025,Northern Territory,Government,Remote,4580.4,2364.8,2215.7
+2025,Northern Territory,Government,Very Remote,7002.5,3591.1,3411.3
+2025,Northern Territory,Non-Government,Inner Regional,0.0,0.0,0.0
+2025,Northern Territory,Non-Government,Major City,0.0,0.0,0.0
+2025,Northern Territory,Non-Government,Outer Regional,7393.0,3696.0,3697.0
+2025,Northern Territory,Non-Government,Remote,3306.1,1714.1,1592.0
+2025,Northern Territory,Non-Government,Very Remote,554.0,310.5,243.5
+2025,Queensland,Government,Inner Regional,103881.3,53624.0,50257.3
+2025,Queensland,Government,Major City,368659.5,189904.5,178755.0
+2025,Queensland,Government,Outer Regional,76132.6,39408.0,36724.6
+2025,Queensland,Government,Remote,7280.3,3727.2,3553.1
+2025,Queensland,Government,Very Remote,7069.3,3669.4,3399.9
+2025,Queensland,Non-Government,Inner Regional,60808.2,30209.5,30598.7
+2025,Queensland,Non-Government,Major City,217168.7,109638.1,107530.6
+2025,Queensland,Non-Government,Outer Regional,43609.4,21615.3,21994.1
+2025,Queensland,Non-Government,Remote,2105.0,1067.4,1037.6
+2025,Queensland,Non-Government,Very Remote,1002.0,508.0,494.0
+2025,South Australia,Government,Inner Regional,15717.1,8188.2,7528.9
+2025,South Australia,Government,Major City,127664.5,66380.9,61283.6
+2025,South Australia,Government,Outer Regional,22423.3,11570.5,10852.9
+2025,South Australia,Government,Remote,4998.3,2640.6,2357.7
+2025,South Australia,Government,Very Remote,2080.8,1077.4,1003.4
+2025,South Australia,Non-Government,Inner Regional,6517.1,3262.1,3255.0
+2025,South Australia,Non-Government,Major City,94498.9,47028.9,47470.0
+2025,South Australia,Non-Government,Outer Regional,7939.3,3917.4,4021.9
+2025,South Australia,Non-Government,Remote,1962.4,1007.4,955.0
+2025,South Australia,Non-Government,Very Remote,133.6,51.6,82.0
+2025,Tasmania,Government,Inner Regional,32694.5,16970.6,15723.9
+2025,Tasmania,Government,Major City,0.0,0.0,0.0
+2025,Tasmania,Government,Outer Regional,18806.9,9684.0,9122.8
+2025,Tasmania,Government,Remote,489.6,251.2,238.4
+2025,Tasmania,Government,Very Remote,255.0,131.0,124.0
+2025,Tasmania,Non-Government,Inner Regional,21646.1,10555.9,11090.2
+2025,Tasmania,Non-Government,Major City,0.0,0.0,0.0
+2025,Tasmania,Non-Government,Outer Regional,6010.9,2987.9,3023.0
+2025,Tasmania,Non-Government,Remote,106.0,49.0,57.0
+2025,Tasmania,Non-Government,Very Remote,0.0,0.0,0.0
+2025,Victoria,Government,Inner Regional,120741.6,63010.2,57731.4
+2025,Victoria,Government,Major City,518898.4,270628.6,248269.8
+2025,Victoria,Government,Outer Regional,25693.0,13284.8,12408.2
+2025,Victoria,Government,Remote,349.9,183.2,166.7
+2025,Victoria,Government,Very Remote,0.0,0.0,0.0
+2025,Victoria,Non-Government,Inner Regional,75982.0,37942.3,38039.7
+2025,Victoria,Non-Government,Major City,311904.1,153643.2,158260.9
+2025,Victoria,Non-Government,Outer Regional,9015.3,4434.8,4580.5
+2025,Victoria,Non-Government,Remote,37.0,14.0,23.0
+2025,Victoria,Non-Government,Very Remote,0.0,0.0,0.0
+2025,Western Australia,Government,Inner Regional,25041.4,13050.9,11990.5
+2025,Western Australia,Government,Major City,238688.3,124156.0,114532.3
+2025,Western Australia,Government,Outer Regional,21397.6,11164.9,10232.7
+2025,Western Australia,Government,Remote,13019.4,6719.9,6299.5
+2025,Western Australia,Government,Very Remote,8030.0,4163.5,3866.5
+2025,Western Australia,Non-Government,Inner Regional,12445.6,6273.6,6172.0
+2025,Western Australia,Non-Government,Major City,133878.4,66452.0,67426.4
+2025,Western Australia,Non-Government,Outer Regional,9559.5,4559.5,5000.0
+2025,Western Australia,Non-Government,Remote,2419.0,1179.0,1240.0
+2025,Western Australia,Non-Government,Very Remote,1585.0,808.0,777.0

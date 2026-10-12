@@ -1,0 +1,481 @@
+state,state_abbr,year,sector,students,share_pct
+Australian Capital Territory,ACT,2006,Government,35178.0,58.86
+Australian Capital Territory,ACT,2007,Government,34667.0,58.2
+Australian Capital Territory,ACT,2008,Government,34031.0,57.39
+Australian Capital Territory,ACT,2009,Government,34336.0,57.3
+Australian Capital Territory,ACT,2010,Government,34498.0,57.12
+Australian Capital Territory,ACT,2011,Government,34644.0,56.86
+Australian Capital Territory,ACT,2012,Government,35649.0,57.31
+Australian Capital Territory,ACT,2013,Government,36464.0,57.49
+Australian Capital Territory,ACT,2014,Government,37363.0,57.82
+Australian Capital Territory,ACT,2015,Government,38776.0,58.64
+Australian Capital Territory,ACT,2016,Government,40314.0,59.58
+Australian Capital Territory,ACT,2017,Government,41886.0,60.36
+Australian Capital Territory,ACT,2018,Government,43269.0,60.94
+Australian Capital Territory,ACT,2019,Government,44299.0,61.15
+Australian Capital Territory,ACT,2020,Government,45647.0,61.49
+Australian Capital Territory,ACT,2021,Government,46193.0,61.3
+Australian Capital Territory,ACT,2022,Government,46275.0,60.94
+Australian Capital Territory,ACT,2023,Government,46177.0,60.24
+Australian Capital Territory,ACT,2024,Government,45997.0,59.72
+Australian Capital Territory,ACT,2025,Government,46231.0,59.36
+New South Wales,NSW,2006,Government,741732.0,66.72
+New South Wales,NSW,2007,Government,739880.0,66.55
+New South Wales,NSW,2008,Government,736687.0,66.31
+New South Wales,NSW,2009,Government,737549.0,66.25
+New South Wales,NSW,2010,Government,743017.0,66.26
+New South Wales,NSW,2011,Government,746307.0,66.01
+New South Wales,NSW,2012,Government,749162.0,65.71
+New South Wales,NSW,2013,Government,756286.0,65.47
+New South Wales,NSW,2014,Government,764627.0,65.39
+New South Wales,NSW,2015,Government,772794.0,65.35
+New South Wales,NSW,2016,Government,781430.0,65.38
+New South Wales,NSW,2017,Government,791763.0,65.47
+New South Wales,NSW,2018,Government,798777.0,65.5
+New South Wales,NSW,2019,Government,806261.0,65.42
+New South Wales,NSW,2020,Government,810705.0,65.28
+New South Wales,NSW,2021,Government,802776.0,64.54
+New South Wales,NSW,2022,Government,791435.0,63.71
+New South Wales,NSW,2023,Government,786434.0,62.96
+New South Wales,NSW,2024,Government,780930.0,62.18
+New South Wales,NSW,2025,Government,773956.0,61.54
+Northern Territory,NT,2006,Government,29649.0,76.5
+Northern Territory,NT,2007,Government,29701.0,75.91
+Northern Territory,NT,2008,Government,29541.0,74.8
+Northern Territory,NT,2009,Government,28718.0,73.98
+Northern Territory,NT,2010,Government,29129.0,73.95
+Northern Territory,NT,2011,Government,29343.0,74.1
+Northern Territory,NT,2012,Government,29595.0,73.78
+Northern Territory,NT,2013,Government,29541.0,72.78
+Northern Territory,NT,2014,Government,29618.0,72.45
+Northern Territory,NT,2015,Government,29014.0,71.31
+Northern Territory,NT,2016,Government,29574.0,71.75
+Northern Territory,NT,2017,Government,30515.0,73.19
+Northern Territory,NT,2018,Government,29765.0,73.15
+Northern Territory,NT,2019,Government,29957.0,73.66
+Northern Territory,NT,2020,Government,30411.0,74.52
+Northern Territory,NT,2021,Government,30097.0,74.2
+Northern Territory,NT,2022,Government,29434.0,73.43
+Northern Territory,NT,2023,Government,29198.0,73.16
+Northern Territory,NT,2024,Government,28923.0,72.22
+Northern Territory,NT,2025,Government,28742.0,71.85
+Queensland,Qld,2006,Government,459665.0,69.37
+Queensland,Qld,2007,Government,484586.0,68.84
+Queensland,Qld,2008,Government,485459.0,68.14
+Queensland,Qld,2009,Government,490690.0,67.74
+Queensland,Qld,2010,Government,492114.0,67.26
+Queensland,Qld,2011,Government,496275.0,66.99
+Queensland,Qld,2012,Government,506668.0,66.96
+Queensland,Qld,2013,Government,515573.0,66.93
+Queensland,Qld,2014,Government,524003.0,67.0
+Queensland,Qld,2015,Government,531379.0,66.96
+Queensland,Qld,2016,Government,540606.0,67.23
+Queensland,Qld,2017,Government,547137.0,67.32
+Queensland,Qld,2018,Government,552710.0,67.35
+Queensland,Qld,2019,Government,561001.0,67.2
+Queensland,Qld,2020,Government,573923.0,66.9
+Queensland,Qld,2021,Government,575173.0,66.31
+Queensland,Qld,2022,Government,571550.0,65.63
+Queensland,Qld,2023,Government,570259.0,64.98
+Queensland,Qld,2024,Government,568129.0,64.3
+Queensland,Qld,2025,Government,564846.0,63.49
+South Australia,SA,2006,Government,170504.0,66.32
+South Australia,SA,2007,Government,170643.0,65.95
+South Australia,SA,2008,Government,168720.0,65.3
+South Australia,SA,2009,Government,169057.0,64.9
+South Australia,SA,2010,Government,169324.0,64.73
+South Australia,SA,2011,Government,168104.0,64.35
+South Australia,SA,2012,Government,167959.0,64.08
+South Australia,SA,2013,Government,168864.0,64.05
+South Australia,SA,2014,Government,167367.0,63.81
+South Australia,SA,2015,Government,169541.0,64.1
+South Australia,SA,2016,Government,171809.0,64.61
+South Australia,SA,2017,Government,173506.0,65.06
+South Australia,SA,2018,Government,174991.0,64.96
+South Australia,SA,2019,Government,177246.0,65.03
+South Australia,SA,2020,Government,177038.0,64.67
+South Australia,SA,2021,Government,174244.0,63.52
+South Australia,SA,2022,Government,172654.0,62.61
+South Australia,SA,2023,Government,172137.0,62.13
+South Australia,SA,2024,Government,175051.0,61.84
+South Australia,SA,2025,Government,173438.0,60.95
+Tasmania,Tas,2006,Government,61774.0,73.33
+Tasmania,Tas,2007,Government,60552.0,72.51
+Tasmania,Tas,2008,Government,59787.0,71.91
+Tasmania,Tas,2009,Government,59478.0,71.7
+Tasmania,Tas,2010,Government,59488.0,71.6
+Tasmania,Tas,2011,Government,59536.0,71.48
+Tasmania,Tas,2012,Government,58749.0,71.23
+Tasmania,Tas,2013,Government,56938.0,70.38
+Tasmania,Tas,2014,Government,57042.0,70.29
+Tasmania,Tas,2015,Government,56717.0,70.14
+Tasmania,Tas,2016,Government,56561.0,70.0
+Tasmania,Tas,2017,Government,56669.0,69.97
+Tasmania,Tas,2018,Government,56964.0,70.12
+Tasmania,Tas,2019,Government,57051.0,69.83
+Tasmania,Tas,2020,Government,56973.0,69.47
+Tasmania,Tas,2021,Government,56055.0,68.57
+Tasmania,Tas,2022,Government,55372.0,67.93
+Tasmania,Tas,2023,Government,54329.0,67.03
+Tasmania,Tas,2024,Government,53404.0,66.22
+Tasmania,Tas,2025,Government,52489.0,65.38
+Victoria,Vic,2006,Government,539319.0,64.71
+Victoria,Vic,2007,Government,538488.0,64.34
+Victoria,Vic,2008,Government,537882.0,63.91
+Victoria,Vic,2009,Government,540359.0,63.73
+Victoria,Vic,2010,Government,540761.0,63.43
+Victoria,Vic,2011,Government,542657.0,63.15
+Victoria,Vic,2012,Government,547852.0,62.97
+Victoria,Vic,2013,Government,556325.0,62.9
+Victoria,Vic,2014,Government,566303.0,62.91
+Victoria,Vic,2015,Government,578370.0,63.08
+Victoria,Vic,2016,Government,591688.0,63.32
+Victoria,Vic,2017,Government,606475.0,63.53
+Victoria,Vic,2018,Government,620891.0,63.8
+Victoria,Vic,2019,Government,634037.0,64.0
+Victoria,Vic,2020,Government,644475.0,64.03
+Victoria,Vic,2021,Government,645672.0,63.85
+Victoria,Vic,2022,Government,646206.0,63.6
+Victoria,Vic,2023,Government,657252.0,63.44
+Victoria,Vic,2024,Government,663860.0,63.08
+Victoria,Vic,2025,Government,667440.0,62.7
+Western Australia,WA,2006,Government,232785.0,67.37
+Western Australia,WA,2007,Government,231926.0,66.78
+Western Australia,WA,2008,Government,232694.0,66.16
+Western Australia,WA,2009,Government,234451.0,65.64
+Western Australia,WA,2010,Government,235928.0,65.4
+Western Australia,WA,2011,Government,238387.0,65.13
+Western Australia,WA,2012,Government,246745.0,65.57
+Western Australia,WA,2013,Government,255033.0,65.92
+Western Australia,WA,2014,Government,260172.0,66.12
+Western Australia,WA,2015,Government,268539.0,66.16
+Western Australia,WA,2016,Government,271820.0,66.47
+Western Australia,WA,2017,Government,276914.0,66.93
+Western Australia,WA,2018,Government,280802.0,67.16
+Western Australia,WA,2019,Government,284978.0,67.29
+Western Australia,WA,2020,Government,289971.0,67.46
+Western Australia,WA,2021,Government,292545.0,67.04
+Western Australia,WA,2022,Government,292900.0,66.55
+Western Australia,WA,2023,Government,298308.0,66.36
+Western Australia,WA,2024,Government,303219.0,66.0
+Western Australia,WA,2025,Government,306262.0,65.68
+Australian Capital Territory,ACT,2006,Catholic,17218.0,28.81
+Australian Capital Territory,ACT,2007,Catholic,17308.0,29.06
+Australian Capital Territory,ACT,2008,Catholic,17286.0,29.15
+Australian Capital Territory,ACT,2009,Catholic,17327.0,28.92
+Australian Capital Territory,ACT,2010,Catholic,17388.0,28.79
+Australian Capital Territory,ACT,2011,Catholic,17250.0,28.31
+Australian Capital Territory,ACT,2012,Catholic,17486.0,28.11
+Australian Capital Territory,ACT,2013,Catholic,17796.0,28.06
+Australian Capital Territory,ACT,2014,Catholic,17996.0,27.85
+Australian Capital Territory,ACT,2015,Catholic,18065.0,27.32
+Australian Capital Territory,ACT,2016,Catholic,17835.0,26.36
+Australian Capital Territory,ACT,2017,Catholic,17777.0,25.62
+Australian Capital Territory,ACT,2018,Catholic,17795.0,25.06
+Australian Capital Territory,ACT,2019,Catholic,17781.0,24.54
+Australian Capital Territory,ACT,2020,Catholic,18179.0,24.49
+Australian Capital Territory,ACT,2021,Catholic,18536.0,24.6
+Australian Capital Territory,ACT,2022,Catholic,18752.0,24.7
+Australian Capital Territory,ACT,2023,Catholic,18952.0,24.72
+Australian Capital Territory,ACT,2024,Catholic,19167.0,24.88
+Australian Capital Territory,ACT,2025,Catholic,19692.0,25.28
+New South Wales,NSW,2006,Catholic,239479.0,21.54
+New South Wales,NSW,2007,Catholic,239505.0,21.54
+New South Wales,NSW,2008,Catholic,238928.0,21.51
+New South Wales,NSW,2009,Catholic,239442.0,21.51
+New South Wales,NSW,2010,Catholic,241025.0,21.49
+New South Wales,NSW,2011,Catholic,244034.0,21.58
+New South Wales,NSW,2012,Catholic,247487.0,21.71
+New South Wales,NSW,2013,Catholic,251409.0,21.76
+New South Wales,NSW,2014,Catholic,254021.0,21.72
+New South Wales,NSW,2015,Catholic,255666.0,21.62
+New South Wales,NSW,2016,Catholic,256035.0,21.42
+New South Wales,NSW,2017,Catholic,255906.0,21.16
+New South Wales,NSW,2018,Catholic,254952.0,20.91
+New South Wales,NSW,2019,Catholic,255449.0,20.73
+New South Wales,NSW,2020,Catholic,257082.0,20.7
+New South Wales,NSW,2021,Catholic,259716.0,20.88
+New South Wales,NSW,2022,Catholic,262877.0,21.16
+New South Wales,NSW,2023,Catholic,267272.0,21.4
+New South Wales,NSW,2024,Catholic,271805.0,21.64
+New South Wales,NSW,2025,Catholic,274763.0,21.85
+Northern Territory,NT,2006,Catholic,4485.0,11.57
+Northern Territory,NT,2007,Catholic,4695.0,12.0
+Northern Territory,NT,2008,Catholic,4806.0,12.17
+Northern Territory,NT,2009,Catholic,4739.0,12.21
+Northern Territory,NT,2010,Catholic,4745.0,12.05
+Northern Territory,NT,2011,Catholic,4561.0,11.52
+Northern Territory,NT,2012,Catholic,4630.0,11.54
+Northern Territory,NT,2013,Catholic,4814.0,11.86
+Northern Territory,NT,2014,Catholic,5057.0,12.37
+Northern Territory,NT,2015,Catholic,5134.0,12.62
+Northern Territory,NT,2016,Catholic,5188.0,12.59
+Northern Territory,NT,2017,Catholic,4963.0,11.9
+Northern Territory,NT,2018,Catholic,4796.0,11.79
+Northern Territory,NT,2019,Catholic,4846.0,11.92
+Northern Territory,NT,2020,Catholic,4794.0,11.75
+Northern Territory,NT,2021,Catholic,4850.0,11.96
+Northern Territory,NT,2022,Catholic,4789.0,11.95
+Northern Territory,NT,2023,Catholic,4812.0,12.06
+Northern Territory,NT,2024,Catholic,5150.0,12.86
+Northern Territory,NT,2025,Catholic,5343.0,13.36
+Queensland,Qld,2006,Catholic,113174.0,17.08
+Queensland,Qld,2007,Catholic,121671.0,17.28
+Queensland,Qld,2008,Catholic,124764.0,17.51
+Queensland,Qld,2009,Catholic,128323.0,17.71
+Queensland,Qld,2010,Catholic,131867.0,18.02
+Queensland,Qld,2011,Catholic,135114.0,18.24
+Queensland,Qld,2012,Catholic,138310.0,18.28
+Queensland,Qld,2013,Catholic,141105.0,18.32
+Queensland,Qld,2014,Catholic,142992.0,18.28
+Queensland,Qld,2015,Catholic,145502.0,18.34
+Queensland,Qld,2016,Catholic,146001.0,18.16
+Queensland,Qld,2017,Catholic,146615.0,18.04
+Queensland,Qld,2018,Catholic,147154.0,17.93
+Queensland,Qld,2019,Catholic,149157.0,17.87
+Queensland,Qld,2020,Catholic,153766.0,17.92
+Queensland,Qld,2021,Catholic,156091.0,18.0
+Queensland,Qld,2022,Catholic,157956.0,18.14
+Queensland,Qld,2023,Catholic,160280.0,18.26
+Queensland,Qld,2024,Catholic,162663.0,18.41
+Queensland,Qld,2025,Catholic,164901.0,18.54
+South Australia,SA,2006,Catholic,46302.0,18.01
+South Australia,SA,2007,Catholic,46808.0,18.09
+South Australia,SA,2008,Catholic,47150.0,18.25
+South Australia,SA,2009,Catholic,47340.0,18.17
+South Australia,SA,2010,Catholic,47361.0,18.1
+South Australia,SA,2011,Catholic,48186.0,18.44
+South Australia,SA,2012,Catholic,48407.0,18.47
+South Australia,SA,2013,Catholic,48682.0,18.46
+South Australia,SA,2014,Catholic,48520.0,18.5
+South Australia,SA,2015,Catholic,47897.0,18.11
+South Australia,SA,2016,Catholic,46856.0,17.62
+South Australia,SA,2017,Catholic,45817.0,17.18
+South Australia,SA,2018,Catholic,45498.0,16.89
+South Australia,SA,2019,Catholic,45769.0,16.79
+South Australia,SA,2020,Catholic,46432.0,16.96
+South Australia,SA,2021,Catholic,48298.0,17.61
+South Australia,SA,2022,Catholic,50333.0,18.25
+South Australia,SA,2023,Catholic,51195.0,18.48
+South Australia,SA,2024,Catholic,52981.0,18.72
+South Australia,SA,2025,Catholic,54835.0,19.27
+Tasmania,Tas,2006,Catholic,13682.0,16.24
+Tasmania,Tas,2007,Catholic,13885.0,16.63
+Tasmania,Tas,2008,Catholic,14070.0,16.92
+Tasmania,Tas,2009,Catholic,14175.0,17.09
+Tasmania,Tas,2010,Catholic,14469.0,17.42
+Tasmania,Tas,2011,Catholic,14608.0,17.54
+Tasmania,Tas,2012,Catholic,14627.0,17.73
+Tasmania,Tas,2013,Catholic,14781.0,18.27
+Tasmania,Tas,2014,Catholic,14832.0,18.28
+Tasmania,Tas,2015,Catholic,14904.0,18.43
+Tasmania,Tas,2016,Catholic,15036.0,18.61
+Tasmania,Tas,2017,Catholic,15035.0,18.56
+Tasmania,Tas,2018,Catholic,14879.0,18.32
+Tasmania,Tas,2019,Catholic,14928.0,18.27
+Tasmania,Tas,2020,Catholic,15052.0,18.35
+Tasmania,Tas,2021,Catholic,15262.0,18.67
+Tasmania,Tas,2022,Catholic,15413.0,18.91
+Tasmania,Tas,2023,Catholic,15610.0,19.26
+Tasmania,Tas,2024,Catholic,15912.0,19.73
+Tasmania,Tas,2025,Catholic,16132.0,20.09
+Victoria,Vic,2006,Catholic,182781.0,21.93
+Victoria,Vic,2007,Catholic,183937.0,21.98
+Victoria,Vic,2008,Catholic,185926.0,22.09
+Victoria,Vic,2009,Catholic,188091.0,22.19
+Victoria,Vic,2010,Catholic,190671.0,22.36
+Victoria,Vic,2011,Catholic,193870.0,22.56
+Victoria,Vic,2012,Catholic,197949.0,22.75
+Victoria,Vic,2013,Catholic,201917.0,22.83
+Victoria,Vic,2014,Catholic,204965.0,22.77
+Victoria,Vic,2015,Catholic,206554.0,22.53
+Victoria,Vic,2016,Catholic,207972.0,22.26
+Victoria,Vic,2017,Catholic,208717.0,21.86
+Victoria,Vic,2018,Catholic,208811.0,21.46
+Victoria,Vic,2019,Catholic,209625.0,21.16
+Victoria,Vic,2020,Catholic,210998.0,20.96
+Victoria,Vic,2021,Catholic,211047.0,20.87
+Victoria,Vic,2022,Catholic,210919.0,20.76
+Victoria,Vic,2023,Catholic,212847.0,20.55
+Victoria,Vic,2024,Catholic,215830.0,20.51
+Victoria,Vic,2025,Catholic,218225.0,20.5
+Western Australia,WA,2006,Catholic,62814.0,18.18
+Western Australia,WA,2007,Catholic,63748.0,18.35
+Western Australia,WA,2008,Catholic,64424.0,18.32
+Western Australia,WA,2009,Catholic,65400.0,18.31
+Western Australia,WA,2010,Catholic,66385.0,18.4
+Western Australia,WA,2011,Catholic,66971.0,18.3
+Western Australia,WA,2012,Catholic,67699.0,17.99
+Western Australia,WA,2013,Catholic,68555.0,17.72
+Western Australia,WA,2014,Catholic,69366.0,17.63
+Western Australia,WA,2015,Catholic,71817.0,17.69
+Western Australia,WA,2016,Catholic,72127.0,17.64
+Western Australia,WA,2017,Catholic,72040.0,17.41
+Western Australia,WA,2018,Catholic,71850.0,17.18
+Western Australia,WA,2019,Catholic,72164.0,17.04
+Western Australia,WA,2020,Catholic,72302.0,16.82
+Western Australia,WA,2021,Catholic,73381.0,16.82
+Western Australia,WA,2022,Catholic,74329.0,16.89
+Western Australia,WA,2023,Catholic,75355.0,16.76
+Western Australia,WA,2024,Catholic,76714.0,16.7
+Western Australia,WA,2025,Catholic,77801.0,16.69
+Australian Capital Territory,ACT,2006,Independent,7371.0,12.33
+Australian Capital Territory,ACT,2007,Independent,7591.0,12.74
+Australian Capital Territory,ACT,2008,Independent,7984.0,13.46
+Australian Capital Territory,ACT,2009,Independent,8255.0,13.78
+Australian Capital Territory,ACT,2010,Independent,8507.0,14.09
+Australian Capital Territory,ACT,2011,Independent,9039.0,14.83
+Australian Capital Territory,ACT,2012,Independent,9073.0,14.58
+Australian Capital Territory,ACT,2013,Independent,9165.0,14.45
+Australian Capital Territory,ACT,2014,Independent,9255.0,14.32
+Australian Capital Territory,ACT,2015,Independent,9284.0,14.04
+Australian Capital Territory,ACT,2016,Independent,9519.0,14.07
+Australian Capital Territory,ACT,2017,Independent,9726.0,14.02
+Australian Capital Territory,ACT,2018,Independent,9943.0,14.0
+Australian Capital Territory,ACT,2019,Independent,10364.0,14.31
+Australian Capital Territory,ACT,2020,Independent,10403.0,14.01
+Australian Capital Territory,ACT,2021,Independent,10629.0,14.1
+Australian Capital Territory,ACT,2022,Independent,10905.0,14.36
+Australian Capital Territory,ACT,2023,Independent,11524.0,15.03
+Australian Capital Territory,ACT,2024,Independent,11859.0,15.4
+Australian Capital Territory,ACT,2025,Independent,11963.0,15.36
+New South Wales,NSW,2006,Independent,130537.0,11.74
+New South Wales,NSW,2007,Independent,132441.0,11.91
+New South Wales,NSW,2008,Independent,135389.0,12.19
+New South Wales,NSW,2009,Independent,136225.0,12.24
+New South Wales,NSW,2010,Independent,137393.0,12.25
+New South Wales,NSW,2011,Independent,140315.0,12.41
+New South Wales,NSW,2012,Independent,143417.0,12.58
+New South Wales,NSW,2013,Independent,147554.0,12.77
+New South Wales,NSW,2014,Independent,150723.0,12.89
+New South Wales,NSW,2015,Independent,154082.0,13.03
+New South Wales,NSW,2016,Independent,157678.0,13.19
+New South Wales,NSW,2017,Independent,161638.0,13.37
+New South Wales,NSW,2018,Independent,165843.0,13.6
+New South Wales,NSW,2019,Independent,170657.0,13.85
+New South Wales,NSW,2020,Independent,174175.0,14.02
+New South Wales,NSW,2021,Independent,181343.0,14.58
+New South Wales,NSW,2022,Independent,187913.0,15.13
+New South Wales,NSW,2023,Independent,195423.0,15.64
+New South Wales,NSW,2024,Independent,203115.0,16.17
+New South Wales,NSW,2025,Independent,209011.0,16.62
+Northern Territory,NT,2006,Independent,4621.0,11.92
+Northern Territory,NT,2007,Independent,4731.0,12.09
+Northern Territory,NT,2008,Independent,5145.0,13.03
+Northern Territory,NT,2009,Independent,5361.0,13.81
+Northern Territory,NT,2010,Independent,5517.0,14.01
+Northern Territory,NT,2011,Independent,5694.0,14.38
+Northern Territory,NT,2012,Independent,5889.0,14.68
+Northern Territory,NT,2013,Independent,6235.0,15.36
+Northern Territory,NT,2014,Independent,6203.0,15.17
+Northern Territory,NT,2015,Independent,6537.0,16.07
+Northern Territory,NT,2016,Independent,6456.0,15.66
+Northern Territory,NT,2017,Independent,6217.0,14.91
+Northern Territory,NT,2018,Independent,6130.0,15.06
+Northern Territory,NT,2019,Independent,5865.0,14.42
+Northern Territory,NT,2020,Independent,5604.0,13.73
+Northern Territory,NT,2021,Independent,5617.0,13.85
+Northern Territory,NT,2022,Independent,5863.0,14.63
+Northern Territory,NT,2023,Independent,5898.0,14.78
+Northern Territory,NT,2024,Independent,5978.0,14.93
+Northern Territory,NT,2025,Independent,5920.0,14.8
+Queensland,Qld,2006,Independent,89768.0,13.55
+Queensland,Qld,2007,Independent,97680.0,13.88
+Queensland,Qld,2008,Independent,102211.0,14.35
+Queensland,Qld,2009,Independent,105413.0,14.55
+Queensland,Qld,2010,Independent,107636.0,14.71
+Queensland,Qld,2011,Independent,109385.0,14.77
+Queensland,Qld,2012,Independent,111683.0,14.76
+Queensland,Qld,2013,Independent,113684.0,14.76
+Queensland,Qld,2014,Independent,115108.0,14.72
+Queensland,Qld,2015,Independent,116664.0,14.7
+Queensland,Qld,2016,Independent,117520.0,14.61
+Queensland,Qld,2017,Independent,119040.0,14.65
+Queensland,Qld,2018,Independent,120845.0,14.72
+Queensland,Qld,2019,Independent,124656.0,14.93
+Queensland,Qld,2020,Independent,130231.0,15.18
+Queensland,Qld,2021,Independent,136083.0,15.69
+Queensland,Qld,2022,Independent,141313.0,16.23
+Queensland,Qld,2023,Independent,147119.0,16.76
+Queensland,Qld,2024,Independent,152720.0,17.29
+Queensland,Qld,2025,Independent,159888.0,17.97
+South Australia,SA,2006,Independent,40294.0,15.67
+South Australia,SA,2007,Independent,41310.0,15.96
+South Australia,SA,2008,Independent,42507.0,16.45
+South Australia,SA,2009,Independent,44077.0,16.92
+South Australia,SA,2010,Independent,44911.0,17.17
+South Australia,SA,2011,Independent,44956.0,17.21
+South Australia,SA,2012,Independent,45727.0,17.45
+South Australia,SA,2013,Independent,46107.0,17.49
+South Australia,SA,2014,Independent,46405.0,17.69
+South Australia,SA,2015,Independent,47045.0,17.79
+South Australia,SA,2016,Independent,47267.0,17.77
+South Australia,SA,2017,Independent,47382.0,17.77
+South Australia,SA,2018,Independent,48881.0,18.15
+South Australia,SA,2019,Independent,49534.0,18.17
+South Australia,SA,2020,Independent,50266.0,18.36
+South Australia,SA,2021,Independent,51760.0,18.87
+South Australia,SA,2022,Independent,52778.0,19.14
+South Australia,SA,2023,Independent,53716.0,19.39
+South Australia,SA,2024,Independent,55044.0,19.44
+South Australia,SA,2025,Independent,56286.0,19.78
+Tasmania,Tas,2006,Independent,8789.0,10.43
+Tasmania,Tas,2007,Independent,9070.0,10.86
+Tasmania,Tas,2008,Independent,9281.0,11.16
+Tasmania,Tas,2009,Independent,9302.0,11.21
+Tasmania,Tas,2010,Independent,9125.0,10.98
+Tasmania,Tas,2011,Independent,9150.0,10.99
+Tasmania,Tas,2012,Independent,9101.0,11.03
+Tasmania,Tas,2013,Independent,9180.0,11.35
+Tasmania,Tas,2014,Independent,9279.0,11.43
+Tasmania,Tas,2015,Independent,9238.0,11.42
+Tasmania,Tas,2016,Independent,9209.0,11.4
+Tasmania,Tas,2017,Independent,9290.0,11.47
+Tasmania,Tas,2018,Independent,9396.0,11.57
+Tasmania,Tas,2019,Independent,9724.0,11.9
+Tasmania,Tas,2020,Independent,9990.0,12.18
+Tasmania,Tas,2021,Independent,10428.0,12.76
+Tasmania,Tas,2022,Independent,10725.0,13.16
+Tasmania,Tas,2023,Independent,11118.0,13.72
+Tasmania,Tas,2024,Independent,11333.0,14.05
+Tasmania,Tas,2025,Independent,11659.0,14.52
+Victoria,Vic,2006,Independent,111394.0,13.36
+Victoria,Vic,2007,Independent,114566.0,13.69
+Victoria,Vic,2008,Independent,117772.0,13.99
+Victoria,Vic,2009,Independent,119375.0,14.08
+Victoria,Vic,2010,Independent,121167.0,14.21
+Victoria,Vic,2011,Independent,122781.0,14.29
+Victoria,Vic,2012,Independent,124249.0,14.28
+Victoria,Vic,2013,Independent,126196.0,14.27
+Victoria,Vic,2014,Independent,128917.0,14.32
+Victoria,Vic,2015,Independent,131931.0,14.39
+Victoria,Vic,2016,Independent,134708.0,14.42
+Victoria,Vic,2017,Independent,139443.0,14.61
+Victoria,Vic,2018,Independent,143425.0,14.74
+Victoria,Vic,2019,Independent,147075.0,14.85
+Victoria,Vic,2020,Independent,150999.0,15.0
+Victoria,Vic,2021,Independent,154459.0,15.28
+Victoria,Vic,2022,Independent,158945.0,15.64
+Victoria,Vic,2023,Independent,165883.0,16.01
+Victoria,Vic,2024,Independent,172764.0,16.42
+Victoria,Vic,2025,Independent,178873.0,16.8
+Western Australia,WA,2006,Independent,49937.0,14.45
+Western Australia,WA,2007,Independent,51637.0,14.87
+Western Australia,WA,2008,Independent,54606.0,15.53
+Western Australia,WA,2009,Independent,57321.0,16.05
+Western Australia,WA,2010,Independent,58449.0,16.2
+Western Australia,WA,2011,Independent,60642.0,16.57
+Western Australia,WA,2012,Independent,61873.0,16.44
+Western Australia,WA,2013,Independent,63315.0,16.36
+Western Australia,WA,2014,Independent,63967.0,16.26
+Western Australia,WA,2015,Independent,65523.0,16.14
+Western Australia,WA,2016,Independent,65017.0,15.9
+Western Australia,WA,2017,Independent,64754.0,15.65
+Western Australia,WA,2018,Independent,65467.0,15.66
+Western Australia,WA,2019,Independent,66387.0,15.67
+Western Australia,WA,2020,Independent,67558.0,15.72
+Western Australia,WA,2021,Independent,70462.0,16.15
+Western Australia,WA,2022,Independent,72876.0,16.56
+Western Australia,WA,2023,Independent,75900.0,16.88
+Western Australia,WA,2024,Independent,79458.0,17.3
+Western Australia,WA,2025,Independent,82222.0,17.63
