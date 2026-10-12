@@ -1,0 +1,39 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {"text": "Out of every 100 students", "subtitle": "One square = 1% of all school students in that year"},
+  "data": {"url": "data/enrolments_national_by_sector.csv",
+           "format": {"type": "csv", "parse": {"year": "number", "students": "number"}}},
+  "transform": [
+    {"filter": "datum.year === 2006 || datum.year === 2025"},
+    {"joinaggregate": [{"op": "sum", "field": "students", "as": "total"}], "groupby": ["year"]},
+    {"calculate": "datum.students / datum.total * 100", "as": "share"},
+    {"calculate": "round(datum.share)", "as": "units"},
+    {"calculate": "indexof(['Government', 'Catholic', 'Independent'], datum.sector)", "as": "s_order"},
+    {"calculate": "sequence(0, datum.units)", "as": "cell"},
+    {"flatten": ["cell"]},
+    {"window": [{"op": "row_number", "as": "pos"}], "groupby": ["year"],
+     "sort": [{"field": "s_order"}, {"field": "cell"}]},
+    {"calculate": "(datum.pos - 1) % 10", "as": "col"},
+    {"calculate": "floor((datum.pos - 1) / 10)", "as": "row"}
+  ],
+  "facet": {"column": {"field": "year", "type": "ordinal", "title": null,
+                       "header": {"labelFontSize": 16, "labelFontWeight": 600}}},
+  "spacing": 48,
+  "config": {"view": {"stroke": null}},
+  "spec": {
+    "width": 220,
+    "height": 220,
+    "mark": {"type": "rect", "stroke": "#ffffff", "strokeWidth": 2.5, "cornerRadius": 2},
+    "encoding": {
+      "x": {"field": "col", "type": "ordinal", "axis": null},
+      "y": {"field": "row", "type": "ordinal", "axis": null},
+      "color": {"field": "sector", "type": "nominal", "title": null,
+                "scale": {"domain": ["Government", "Catholic", "Independent"],
+                          "range": ["#2a78d6", "#eb6834", "#1baf7a"]},
+                "legend": {"orient": "top", "symbolType": "square"}},
+      "tooltip": [{"field": "year", "type": "ordinal"}, {"field": "sector"},
+                  {"field": "share", "type": "quantitative", "title": "Share (%)", "format": ".1f"},
+                  {"field": "students", "type": "quantitative", "format": ","}]
+    }
+  }
+}

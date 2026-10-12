@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Full House: Where Australia's School Students Are Going</title>
+  <title>Australia's School Enrolment Trends, 2006–2025</title>
   <link rel="stylesheet" href="css/style.css">
   <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
@@ -11,41 +11,56 @@
 </head>
 <body>
   <header>
-    <h1>Full House</h1>
+    <h1>How Australia's School Enrolments Changed, 2006–2025</h1>
     <p>Australia has 767,000 more school students than 20 years ago.</p>
+    <p class="lead">This page follows where those students went: which school sectors grew fastest, which states and suburbs took on the growth, and how unusually large or small age groups move through school year by year. It draws on ABS enrolment counts for every year from 2006 to 2025 and ACARA figures for more than 9,600 individual schools.</p>
+    <p class="byline">By William Koo · October 2026 · FIT3179 Data Visualisation 2</p>
   </header>
 
   <section id="trend">
     <h2>Every sector grew, but not at the same pace</h2>
-    <p>Your story text here.</p>
+    <p>Between 2006 and 2025, school enrolments rose by 23%, and every sector gained students. Government schools still added the most, about 343,000, but Independent schools grew four times as fast: up 62%, against 22% for Catholic schools and 15% for Government schools.</p>
+    <p>The gap has widened since 2020. Government enrolments have levelled off, while Independent schools added another 117,000 students in just five years. Switch the chart to "Number of students" to see how much larger the Government sector still is.</p>
     <div id="v1" class="vis"></div>
+    <p class="lead">Faster growth has shifted the mix. Of every 100 school students in 2006, 13 were enrolled at an Independent school; by 2025 it was 17. Government schools' share fell from 67 to 63, while Catholic schools held steady at 20.</p>
+    <div id="v2" class="vis"></div>
   </section>
 
   <section id="states">
     <h2>Victoria, the ACT and the West pulled ahead</h2>
-    <div id="v2" class="vis"></div>
+    <div id="v3" class="vis"></div>
+    <div id="v13" class="vis"></div>
   </section>
 
   <section id="independent">
     <h2>The quiet shift to Independent schools</h2>
-    <div id="v3" class="vis"></div>
     <div id="v4" class="vis"></div>
+    <div id="v5" class="vis"></div>
+    <div id="v6" class="vis"></div>
   </section>
 
   <section id="suburbs">
     <h2>Growth lives on the edge of our cities</h2>
-    <div id="v5" class="vis"></div>
-    <div id="v6" class="vis"></div>
     <div id="v7" class="vis"></div>
+    <div id="v8" class="vis"></div>
+    <div id="v9" class="vis"></div>
+    <div id="v10" class="vis"></div>
   </section>
 
   <section id="wave">
     <h2>Ripples you can follow for twelve years</h2>
-    <div id="v8" class="vis"></div>
-    <div id="v9" class="vis"></div>
+    <div id="v11" class="vis"></div>
   </section>
 
-  <footer>Sources: ABS Schools 2025; ACARA Data Access Program.</footer>
+  <section id="bush">
+    <h2>Beyond the cities, government schools carry the load</h2>
+    <div id="v12" class="vis"></div>
+  </section>
+
+  <footer>
+    <p>Sources: ABS Schools 2025; ACARA Data Access Program.</p>
+    <p>By William Koo, October 2026.</p>
+  </footer>
   <script src="js/main.js"></script>
 </body>
 </html>
