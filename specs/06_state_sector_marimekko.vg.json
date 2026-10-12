@@ -1,0 +1,60 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 320,
+  "title": {"text": "How big each state is, and how its students split by sector, 2025",
+            "subtitle": "Column width = state's share of all Australian students. White numbers = % at Independent schools"},
+  "config": {"view": {"stroke": null}},
+  "data": {"url": "data/sector_share_by_state_year.csv",
+           "format": {"type": "csv", "parse": {"year": "number", "students": "number", "share_pct": "number"}}},
+  "transform": [
+    {"filter": "datum.year === 2025"},
+    {"calculate": "indexof(['Government', 'Catholic', 'Independent'], datum.sector)", "as": "s_order"},
+    {"joinaggregate": [{"op": "sum", "field": "students", "as": "state_total"}], "groupby": ["state_abbr"]},
+    {"stack": "students", "groupby": ["state_abbr"], "sort": [{"field": "s_order"}],
+     "offset": "normalize", "as": ["y0", "y1"]},
+    {"calculate": "datum.s_order === 0 ? datum.state_total : 0", "as": "w"},
+    {"stack": "w", "groupby": [], "offset": "normalize",
+     "sort": [{"field": "state_total", "order": "descending"}, {"field": "s_order", "order": "ascending"}],
+     "as": ["xa", "xb"]},
+    {"joinaggregate": [{"op": "min", "field": "xa", "as": "x0"}, {"op": "max", "field": "xb", "as": "x1"}],
+     "groupby": ["state_abbr"]},
+    {"calculate": "(datum.x0 + datum.x1) / 2", "as": "x_mid"},
+    {"calculate": "datum.x1 - datum.x0", "as": "state_pct"},
+    {"calculate": "(datum.y0 + datum.y1) / 2", "as": "y_mid"}
+  ],
+  "layer": [
+    {
+      "mark": {"type": "rect", "stroke": "#ffffff", "strokeWidth": 1.5},
+      "encoding": {
+        "x": {"field": "x0", "type": "quantitative", "title": "Share of all Australian students (bar width)",
+              "axis": {"format": "%", "values": [0, 0.25, 0.5, 0.75, 1]}, "scale": {"domain": [0, 1]}},
+        "x2": {"field": "x1"},
+        "y": {"field": "y0", "type": "quantitative", "title": "Share of the state's students",
+              "axis": {"format": "%", "values": [0, 0.25, 0.5, 0.75, 1]}, "scale": {"domain": [0, 1]}},
+        "y2": {"field": "y1"},
+        "color": {"field": "sector", "type": "nominal", "title": null,
+                  "scale": {"domain": ["Government", "Catholic", "Independent"],
+                            "range": ["#2a78d6", "#eb6834", "#1baf7a"]},
+                  "legend": {"orient": "top"}},
+        "tooltip": [{"field": "state", "title": "State"}, {"field": "sector"},
+                    {"field": "students", "type": "quantitative", "format": ","},
+                    {"field": "share_pct", "type": "quantitative", "title": "Share of state (%)", "format": ".1f"},
+                    {"field": "state_pct", "type": "quantitative", "title": "State's share of Australia", "format": ".1%"}]
+      }
+    },
+    {
+      "transform": [{"filter": "datum.s_order === 0 && datum.state_pct > 0.035"}],
+      "mark": {"type": "text", "baseline": "bottom", "dy": -4, "fontWeight": 600, "fontSize": 12},
+      "encoding": {"x": {"field": "x_mid", "type": "quantitative"}, "y": {"datum": 1},
+                   "text": {"field": "state_abbr"}}
+    },
+    {
+      "transform": [{"filter": "datum.sector === 'Independent' && datum.state_pct > 0.035"}],
+      "mark": {"type": "text", "baseline": "middle", "color": "#ffffff", "fontWeight": 600, "fontSize": 11},
+      "encoding": {"x": {"field": "x_mid", "type": "quantitative"},
+                   "y": {"field": "y_mid", "type": "quantitative"},
+                   "text": {"field": "share_pct", "type": "quantitative", "format": ".0f"}}
+    }
+  ]
+}
