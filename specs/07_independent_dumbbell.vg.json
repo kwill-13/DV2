@@ -1,0 +1,68 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Independent share of students, 2015 vs 2025",
+    "subtitle": "Sorted by change. Every state rose except the Northern Territory"
+  },
+  "width": "container",
+  "height": 300,
+  "config": {"view": {"stroke": null}},
+  "data": {"url": "data/state_summary_2025.csv"},
+  "transform": [
+    {"calculate": "datum.independent_share_2025_pct - datum.independent_share_2015_pct", "as": "gain"},
+    {"calculate": "max(datum.independent_share_2015_pct, datum.independent_share_2025_pct)", "as": "right_end"},
+    {"calculate": "(datum.gain > 0 ? '+' : '−') + format(abs(datum.gain), '.1f') + ' pts'", "as": "gain_label"},
+    {"fold": ["independent_share_2015_pct", "independent_share_2025_pct"], "as": ["which", "share"]},
+    {"calculate": "datum.which === 'independent_share_2015_pct' ? '2015' : '2025'", "as": "Year"}
+  ],
+  "encoding": {
+    "y": {
+      "field": "state",
+      "type": "nominal",
+      "title": null,
+      "sort": {"field": "gain", "op": "max", "order": "descending"},
+      "axis": {"domain": false, "ticks": false, "labelPadding": 8, "labelLimit": 220}
+    },
+    "x": {
+      "field": "share",
+      "type": "quantitative",
+      "title": "Students in Independent schools (%)",
+      "scale": {"domain": [10, 22]}
+    }
+  },
+  "layer": [
+    {
+      "mark": {"type": "rule", "color": "#a9a8a3", "strokeWidth": 2.5},
+      "encoding": {
+        "x": {"aggregate": "min", "field": "share", "type": "quantitative"},
+        "x2": {"aggregate": "max", "field": "share"}
+      }
+    },
+    {
+      "mark": {"type": "point", "filled": true, "size": 120, "opacity": 1},
+      "encoding": {
+        "color": {
+          "field": "Year",
+          "type": "nominal",
+          "title": null,
+          "scale": {"domain": ["2015", "2025"], "range": ["#9ad9bf", "#0b7a52"]},
+          "legend": {"orient": "top"}
+        },
+        "tooltip": [
+          {"field": "state", "title": "State"},
+          {"field": "Year"},
+          {"field": "share", "type": "quantitative", "title": "Independent share (%)", "format": ".1f"}
+        ]
+      }
+    },
+    {
+      "transform": [{"filter": "datum.Year === '2025'"}],
+      "mark": {"type": "text", "align": "left", "dx": 12, "fontSize": 11, "fontWeight": 600},
+      "encoding": {
+        "x": {"field": "right_end", "type": "quantitative"},
+        "text": {"field": "gain_label"},
+        "color": {"condition": {"test": "datum.gain < 0", "value": "#c43c3c"}, "value": "#0b7a52"}
+      }
+    }
+  ]
+}

@@ -1,0 +1,145 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": {"expr": "region === 'Australia' ? 'How every school changed, 2015 to 2025' : 'How every school changed, 2015 to 2025: ' + region"},
+    "subtitle": "Schools open in both years. Circle size = students in 2025; colour = change since 2015"
+  },
+  "width": "container",
+  "height": 540,
+  "config": {"view": {"stroke": null}},
+  "params": [
+    {
+      "name": "region",
+      "value": "Australia",
+      "bind": {
+        "input": "select",
+        "options": ["Australia", "Melbourne", "Sydney", "Brisbane & Gold Coast", "Perth", "Adelaide"],
+        "name": "Zoom to: "
+      }
+    },
+    {
+      "name": "ctr",
+      "expr": "region === 'Melbourne' ? [144.93, -37.86] : region === 'Sydney' ? [150.95, -33.83] : region === 'Brisbane & Gold Coast' ? [152.98, -27.7] : region === 'Perth' ? [115.88, -32.02] : region === 'Adelaide' ? [138.62, -34.85] : [134, -28.3]"
+    },
+    {
+      "name": "zoom",
+      "expr": "region === 'Melbourne' ? 21000 : region === 'Sydney' ? 21000 : region === 'Brisbane & Gold Coast' ? 16000 : region === 'Perth' ? 19000 : region === 'Adelaide' ? 24000 : 900"
+    },
+    {
+      "name": "sector",
+      "value": "All",
+      "bind": {"input": "select", "options": ["All", "Government", "Catholic", "Independent"], "name": "Sector: "}
+    },
+    {
+      "name": "search",
+      "value": "",
+      "bind": {"input": "search", "placeholder": "e.g. Tarneit", "name": "Find a school or suburb: "}
+    }
+  ],
+  "projection": {
+    "type": "conicConformal",
+    "parallels": [-18, -36],
+    "rotate": {"expr": "[-ctr[0], 0, 0]"},
+    "center": {"expr": "[0, ctr[1]]"},
+    "scale": {"expr": "zoom"}
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "data/geo/australia_states_detail.topojson",
+        "format": {"type": "topojson", "feature": "states"}
+      },
+      "mark": {"type": "geoshape", "fill": "#efeeea", "stroke": "#b9b8b2", "strokeWidth": 0.8, "clip": true}
+    },
+    {
+      "data": {
+        "url": "data/schools_web.csv",
+        "format": {
+          "type": "csv",
+          "parse": {"lat": "number", "lon": "number", "enrolments": "number", "enrol_2015": "number", "change_pct": "number"}
+        }
+      },
+      "transform": [
+        {"filter": "datum.status === 'Open in 2015'"},
+        {"calculate": "{'G': 'Government', 'C': 'Catholic', 'I': 'Independent'}[datum.sector]", "as": "sector_name"},
+        {"filter": "sector === 'All' || datum.sector_name === sector"},
+        {
+          "calculate": "search !== '' && (indexof(lower(datum.name), lower(search)) >= 0 || indexof(lower(datum.suburb), lower(search)) >= 0)",
+          "as": "match"
+        }
+      ],
+      "mark": {"type": "circle", "clip": true, "stroke": "#ffffff", "strokeWidth": 0.4},
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"},
+        "size": {
+          "field": "enrolments",
+          "type": "quantitative",
+          "title": "Students (2025)",
+          "scale": {"type": "sqrt", "domain": [0, 4000], "range": [2, {"expr": "region === 'Australia' ? 120 : 520"}]},
+          "legend": {"values": [250, 1000, 2500], "orient": "bottom-left", "fillColor": "rgba(255,255,255,0.85)", "padding": 6}
+        },
+        "color": {
+          "field": "change_pct",
+          "type": "quantitative",
+          "title": "Change since 2015 (%)",
+          "scale": {"domain": [-50, 0, 100], "range": ["#c43c3c", "#e6e4df", "#3b2c8f"], "clamp": true},
+          "legend": {"orient": "top-right", "direction": "horizontal", "gradientLength": 160, "titleLimit": 0, "labelOverlap": false, "fillColor": "rgba(255,255,255,0.85)", "padding": 6, "values": [-50, 0, 50, 100], "labelExpr": "(datum.value > 0 ? '+' : '') + datum.value + (datum.value === 100 ? '+' : '')"}
+        },
+        "opacity": {"condition": {"test": "search === '' || datum.match", "value": 0.85}, "value": 0.08},
+        "order": {"field": "enrolments", "sort": "descending"},
+        "tooltip": [
+          {"field": "name", "title": "School"},
+          {"field": "suburb", "title": "Suburb"},
+          {"field": "sector_name", "title": "Sector"},
+          {"field": "enrol_2015", "type": "quantitative", "title": "Students (2015)", "format": ","},
+          {"field": "enrolments", "type": "quantitative", "title": "Students (2025)", "format": ","},
+          {"field": "change_pct", "type": "quantitative", "title": "Change (%)", "format": "+.0f"}
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"place": "Melbourne CBD", "lon": 144.963, "lat": -37.814, "city": "Melbourne"},
+          {"place": "Tarneit", "lon": 144.668, "lat": -37.842, "city": "Melbourne"},
+          {"place": "Clyde North", "lon": 145.356, "lat": -38.099, "city": "Melbourne"},
+          {"place": "Mickleham", "lon": 144.903, "lat": -37.544, "city": "Melbourne"},
+          {"place": "Sydney CBD", "lon": 151.209, "lat": -33.869, "city": "Sydney"},
+          {"place": "Parramatta", "lon": 151.005, "lat": -33.813, "city": "Sydney"},
+          {"place": "Marsden Park", "lon": 150.826, "lat": -33.695, "city": "Sydney"},
+          {"place": "Oran Park", "lon": 150.745, "lat": -34.008, "city": "Sydney"},
+          {"place": "Brisbane CBD", "lon": 153.025, "lat": -27.470, "city": "Brisbane & Gold Coast"},
+          {"place": "Springfield Lakes", "lon": 152.916, "lat": -27.684, "city": "Brisbane & Gold Coast"},
+          {"place": "Yarrabilba", "lon": 153.119, "lat": -27.811, "city": "Brisbane & Gold Coast"},
+          {"place": "Coomera", "lon": 153.328, "lat": -27.851, "city": "Brisbane & Gold Coast"},
+          {"place": "Perth CBD", "lon": 115.861, "lat": -31.952, "city": "Perth"},
+          {"place": "Alkimos", "lon": 115.692, "lat": -31.617, "city": "Perth"},
+          {"place": "Baldivis", "lon": 115.813, "lat": -32.337, "city": "Perth"},
+          {"place": "Byford", "lon": 115.997, "lat": -32.222, "city": "Perth"},
+          {"place": "Adelaide CBD", "lon": 138.601, "lat": -34.929, "city": "Adelaide"},
+          {"place": "Angle Vale", "lon": 138.653, "lat": -34.639, "city": "Adelaide"},
+          {"place": "Mount Barker", "lon": 138.862, "lat": -35.072, "city": "Adelaide"}
+        ]
+      },
+      "transform": [{"filter": "datum.city === region"}],
+      "layer": [
+        {
+          "mark": {"type": "point", "shape": "cross", "size": 50, "filled": true, "color": "#16150f", "clip": true},
+          "encoding": {
+            "longitude": {"field": "lon", "type": "quantitative"},
+            "latitude": {"field": "lat", "type": "quantitative"}
+          }
+        },
+        {
+          "mark": {"type": "text", "dy": -11, "fontSize": 12, "fontWeight": 700, "color": "#16150f", "clip": true},
+          "encoding": {
+            "longitude": {"field": "lon", "type": "quantitative"},
+            "latitude": {"field": "lat", "type": "quantitative"},
+            "text": {"field": "place"}
+          }
+        }
+      ]
+    }
+  ]
+}
