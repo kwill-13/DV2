@@ -11,9 +11,9 @@ const charts = [
   ["#v8",  "specs/08_school_growth_symbols.vg.json"],
   ["#v9",  "specs/09_new_schools_dots.vg.json"],
   ["#v10", "specs/10_school_size_density.vg.json"],
-  // ["#v11", "specs/11_top_growth_lgas.vg.json"],
-  // ["#v12", "specs/12_grade_cohort_heatmap.vg.json"],
-  // ["#v13", "specs/13_remoteness_sector.vg.json"],
+  ["#v11", "specs/11_top_growth_lgas.vg.json"],
+  ["#v12", "specs/12_grade_cohort_heatmap.vg.json"],
+  ["#v13", "specs/13_remoteness_sector.vg.json"],
 ];
 
 charts.forEach(([el, url]) => vegaEmbed(el, url, opts).catch(err => console.error(url, err)));

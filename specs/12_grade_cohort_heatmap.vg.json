@@ -1,0 +1,102 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Change in students at each year level, compared with the year before",
+    "subtitle": "Red = fewer students than the same year level last year; blue = more. Diagonal stripes are age groups moving up through school"
+  },
+  "width": "container",
+  "height": 380,
+  "config": {"view": {"stroke": null}},
+  "params": [
+    {
+      "name": "place",
+      "value": "Australia",
+      "bind": {
+        "input": "select",
+        "options": ["Australia", "New South Wales", "Victoria", "Queensland", "South Australia", "Western Australia", "Tasmania", "Northern Territory", "Australian Capital Territory"],
+        "name": "Place: "
+      }
+    },
+    {
+      "name": "sector",
+      "value": "All",
+      "bind": {"input": "select", "options": ["All", "Government", "Catholic", "Independent"], "name": "Sector: "}
+    }
+  ],
+  "data": {
+    "url": "data/enrolments_by_grade.csv",
+    "format": {"type": "csv", "parse": {"year": "number", "students": "number"}}
+  },
+  "transform": [
+    {"filter": "place === 'Australia' || datum.state === place"},
+    {"filter": "sector === 'All' || datum.sector === sector"},
+    {"filter": "indexof(datum.grade, 'Ungraded') < 0"},
+    {
+      "calculate": "datum.grade === 'Pre-Year 1 (Foundation Year)' ? 'Foundation' : indexof(datum.grade, 'Year 7') === 0 ? 'Year 7' : datum.grade",
+      "as": "level"
+    },
+    {"aggregate": [{"op": "sum", "field": "students", "as": "students"}], "groupby": ["year", "level"]},
+    {
+      "calculate": "indexof(['Foundation', 'Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5', 'Year 6', 'Year 7', 'Year 8', 'Year 9', 'Year 10', 'Year 11', 'Year 12'], datum.level)",
+      "as": "lvl_order"
+    },
+    {"window": [{"op": "lag", "field": "students", "as": "prev"}], "groupby": ["level"], "sort": [{"field": "year"}]},
+    {"calculate": "datum.prev ? (datum.students / datum.prev - 1) * 100 : null", "as": "yoy"},
+    {"filter": "datum.yoy !== null"}
+  ],
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "ordinal",
+      "title": null,
+      "axis": {"labelAngle": 0, "labelExpr": "datum.value % 5 === 0 || datum.value === 2007 ? datum.value : ''", "domain": false, "ticks": false}
+    },
+    "y": {
+      "field": "level",
+      "type": "ordinal",
+      "title": null,
+      "sort": {"field": "lvl_order", "op": "min", "order": "ascending"},
+      "axis": {"domain": false, "ticks": false}
+    }
+  },
+  "layer": [
+    {
+      "mark": {"type": "rect", "stroke": "#ffffff", "strokeWidth": 1, "cornerRadius": 2},
+      "encoding": {
+        "color": {
+          "field": "yoy",
+          "type": "quantitative",
+          "title": ["Change on", "last year (%)"],
+          "scale": {"domain": [-10, 0, 10], "range": ["#c43c3c", "#f0efec", "#2a5fb0"], "interpolate": "lab", "clamp": true},
+          "legend": {"labelExpr": "(datum.value > 0 ? '+' : '') + datum.value"}
+        },
+        "tooltip": [
+          {"field": "level", "title": "Year level"},
+          {"field": "year", "title": "Year"},
+          {"field": "students", "type": "quantitative", "title": "Students", "format": ","},
+          {"field": "prev", "type": "quantitative", "title": "Same level, year before", "format": ","},
+          {"field": "yoy", "type": "quantitative", "title": "Change (%)", "format": "+.1f"}
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"year": 2008, "level": "Year 1", "lvl_order": 1, "note": "◀ Qld's smaller 'half cohort' starts Year 1 (2008)", "align": "left", "dx": 16},
+          {"year": 2019, "level": "Year 12", "lvl_order": 12, "note": "…and finishes Year 12 (2019) ▶", "align": "right", "dx": -16}
+        ]
+      },
+      "transform": [{"filter": "(place === 'Australia' || place === 'Queensland') && sector === 'All'"}],
+      "mark": {
+        "type": "text",
+        "fontSize": 11.5,
+        "fontWeight": 700,
+        "fontStyle": "italic",
+        "color": "#16150f",
+        "align": {"expr": "datum.align"},
+        "dx": {"expr": "datum.dx"}
+      },
+      "encoding": {"text": {"field": "note"}}
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "The 12 council areas that added the most students, 2015 to 2025",
+    "subtitle": "Students at schools opened since 2015, plus growth at schools that were already open"
+  },
+  "width": "container",
+  "height": 360,
+  "config": {"view": {"stroke": null}},
+  "data": {
+    "url": "data/schools_web.csv",
+    "format": {"type": "csv", "parse": {"enrolments": "number", "enrol_2015": "number"}}
+  },
+  "params": [
+    {
+      "name": "st",
+      "value": "All",
+      "bind": {"input": "select", "options": ["All", "NSW", "VIC", "QLD", "SA", "WA", "TAS", "NT", "ACT"], "name": "State: "}
+    }
+  ],
+  "transform": [
+    {"filter": "st === 'All' || datum.state_abbr === st"},
+    {"calculate": "datum.status === 'New since 2015' ? datum.enrolments : 0", "as": "new_s"},
+    {"calculate": "datum.status === 'Open in 2015' ? datum.enrolments - datum.enrol_2015 : 0", "as": "exist_s"},
+    {"calculate": "datum.lga === 'Unincorporated ACT' ? 'Canberra (ACT)' : datum.lga + ' (' + datum.state_abbr + ')'", "as": "area"},
+    {
+      "aggregate": [
+        {"op": "sum", "field": "new_s", "as": "At new schools"},
+        {"op": "sum", "field": "exist_s", "as": "Growth at existing schools"}
+      ],
+      "groupby": ["area"]
+    },
+    {"calculate": "datum['At new schools'] + datum['Growth at existing schools']", "as": "added"},
+    {"window": [{"op": "row_number", "as": "rank"}], "sort": [{"field": "added", "order": "descending"}]},
+    {"filter": "datum.rank <= 12"},
+    {"fold": ["At new schools", "Growth at existing schools"], "as": ["source", "students"]}
+  ],
+  "layer": [
+    {
+      "mark": {"type": "bar", "cornerRadiusEnd": 3},
+      "encoding": {
+        "y": {
+          "field": "area",
+          "type": "nominal",
+          "title": null,
+          "sort": {"field": "rank", "op": "min", "order": "ascending"},
+          "axis": {"domain": false, "ticks": false, "labelPadding": 6, "labelLimit": 200}
+        },
+        "x": {
+          "field": "students",
+          "type": "quantitative",
+          "stack": "zero",
+          "title": "Extra students, 2015 → 2025",
+          "axis": {"format": "~s"}
+        },
+        "color": {
+          "field": "source",
+          "type": "nominal",
+          "title": null,
+          "scale": {"domain": ["At new schools", "Growth at existing schools"], "range": ["#3b2c8f", "#a49be0"]},
+          "legend": {"orient": "top"}
+        },
+        "tooltip": [
+          {"field": "area", "title": "Council area"},
+          {"field": "source", "title": "Where"},
+          {"field": "students", "type": "quantitative", "title": "Students", "format": ","},
+          {"field": "added", "type": "quantitative", "title": "Total extra", "format": ","}
+        ]
+      }
+    },
+    {
+      "transform": [{"filter": "datum.source === 'Growth at existing schools'"}],
+      "mark": {"type": "text", "align": "left", "dx": 6, "fontSize": 11, "fontWeight": 600, "color": "#52514e"},
+      "encoding": {
+        "y": {"field": "area", "type": "nominal", "sort": {"field": "rank", "op": "min", "order": "ascending"}},
+        "x": {"field": "added", "type": "quantitative"},
+        "text": {"field": "added", "type": "quantitative", "format": ",.0f"}
+      }
+    }
+  ]
+}

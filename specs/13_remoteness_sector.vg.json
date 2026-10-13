@@ -1,0 +1,79 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Share of students at government schools, by remoteness, 2025",
+    "subtitle": "Full-time equivalent students. This table only splits government from non-government schools"
+  },
+  "width": "container",
+  "height": 230,
+  "config": {"view": {"stroke": null}},
+  "data": {
+    "url": "data/fte_by_remoteness_2025.csv",
+    "format": {"type": "csv", "parse": {"fte_students": "number"}}
+  },
+  "params": [
+    {
+      "name": "st",
+      "value": "Australia",
+      "bind": {
+        "input": "select",
+        "options": ["Australia", "New South Wales", "Victoria", "Queensland", "South Australia", "Western Australia", "Tasmania", "Northern Territory"],
+        "name": "State: "
+      }
+    }
+  ],
+  "transform": [
+    {"filter": "st === 'Australia' || datum.state === st"},
+    {"aggregate": [{"op": "sum", "field": "fte_students", "as": "fte"}], "groupby": ["remoteness", "sector"]},
+    {"joinaggregate": [{"op": "sum", "field": "fte", "as": "tot"}], "groupby": ["remoteness"]},
+    {"filter": "datum.tot > 0"},
+    {"calculate": "datum.fte / datum.tot", "as": "share"},
+    {"calculate": "datum.sector === 'Government' ? 'Government' : 'Catholic & Independent'", "as": "sector_label"},
+    {"calculate": "indexof(['Major City', 'Inner Regional', 'Outer Regional', 'Remote', 'Very Remote'], datum.remoteness)", "as": "r_order"}
+  ],
+  "encoding": {
+    "y": {
+      "field": "remoteness",
+      "type": "nominal",
+      "title": null,
+      "sort": {"field": "r_order", "op": "min"},
+      "axis": {"domain": false, "ticks": false, "labelPadding": 6}
+    },
+    "x": {
+      "field": "share",
+      "type": "quantitative",
+      "stack": "normalize",
+      "title": null,
+      "axis": {"format": "%", "values": [0, 0.25, 0.5, 0.75, 1]}
+    }
+  },
+  "layer": [
+    {
+      "mark": {"type": "bar", "stroke": "#ffffff", "strokeWidth": 2},
+      "encoding": {
+        "color": {
+          "field": "sector_label",
+          "type": "nominal",
+          "title": null,
+          "scale": {"domain": ["Government", "Catholic & Independent"], "range": ["#2a78d6", "#c9c7c0"]},
+          "legend": {"orient": "top"}
+        },
+        "order": {"field": "sector_label", "sort": "descending"},
+        "tooltip": [
+          {"field": "remoteness", "title": "Area"},
+          {"field": "sector_label", "title": "Sector"},
+          {"field": "fte", "type": "quantitative", "title": "Students (FTE)", "format": ",.0f"},
+          {"field": "share", "type": "quantitative", "title": "Share", "format": ".1%"}
+        ]
+      }
+    },
+    {
+      "transform": [{"filter": "datum.sector === 'Government'"}],
+      "mark": {"type": "text", "align": "left", "color": "#ffffff", "fontWeight": 600},
+      "encoding": {
+        "x": {"value": 8},
+        "text": {"field": "share", "type": "quantitative", "format": ".0%"}
+      }
+    }
+  ]
+}
