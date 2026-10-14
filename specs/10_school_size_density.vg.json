@@ -38,15 +38,10 @@
       }
     }
   },
-  "spacing": 6,
-  "resolve": {
-    "scale": {
-      "y": "independent"
-    }
-  },
+  "spacing": 12,
   "spec": {
-    "width": 989,
-    "height": 80,
+    "width": 946,
+    "height": 100,
     "layer": [
       {
         "transform": [
@@ -64,6 +59,10 @@
               "size",
               "density"
             ]
+          },
+          {
+            "calculate": "datum.density * 100 * 100",
+            "as": "pct"
           }
         ],
         "mark": {
@@ -86,10 +85,31 @@
             }
           },
           "y": {
-            "field": "density",
+            "field": "pct",
             "type": "quantitative",
-            "axis": null,
-            "stack": null
+            "stack": null,
+            "title": [
+              "% of schools",
+              "per 100 students"
+            ],
+            "axis": {
+              "format": ".0f",
+              "titleFontSize": 10,
+              "titleFontWeight": 400,
+              "titleColor": "#52514e",
+              "grid": true,
+              "values": [
+                0,
+                10,
+                20
+              ]
+            },
+            "scale": {
+              "domain": [
+                0,
+                25
+              ]
+            }
           },
           "color": {
             "field": "group",

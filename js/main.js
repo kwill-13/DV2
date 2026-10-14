@@ -12,7 +12,7 @@ const charts = [
   ["#v9",  "specs/09_new_schools_dots.vg.json"],
   ["#v10", "specs/10_school_size_density.vg.json"],
   ["#v11", "specs/11_top_growth_lgas.vg.json"],
-  ["#v12", "specs/12_grade_cohort_heatmap.vg.json"],
+  ["#v12", "specs/12_year_level_sector_heatmap.vg.json"],
   ["#v13", "specs/13_remoteness_sector.vg.json"],
 ];
 

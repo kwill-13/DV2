@@ -22,7 +22,7 @@
         {"calculate": "datum.state_abbr", "as": "label"},
         {"calculate": "datum.change >= 0 ? 'Added students' : 'Lost students'", "as": "kind"},
         {"calculate": "max(datum.start, datum.end)", "as": "top"},
-        {"calculate": "(datum.change >= 0 ? '+' : '−') + format(abs(datum.change) / 1000, ',.0f') + 'k'", "as": "change_label"}
+        {"calculate": "(datum.change >= 0 ? '+' : '−') + (abs(datum.change) < 5000 ? format(abs(datum.change), ',') : format(abs(datum.change) / 1000, ',.0f') + 'k')", "as": "change_label"}
       ],
       "layer": [
         {
@@ -42,8 +42,17 @@
           }
         },
         {
+          "transform": [{"filter": "datum.change < 0"}],
+          "mark": {"type": "point", "shape": "triangle-down", "filled": true, "size": 140, "color": "#c43c3c", "opacity": 1, "yOffset": 7},
+          "encoding": {"y": {"field": "end", "type": "quantitative"}}
+        },
+        {
           "mark": {"type": "text", "baseline": "bottom", "dy": -4, "fontSize": 12, "fontWeight": 600},
-          "encoding": {"y": {"field": "top", "type": "quantitative"}, "text": {"field": "change_label"}}
+          "encoding": {
+            "y": {"field": "top", "type": "quantitative"},
+            "text": {"field": "change_label"},
+            "color": {"condition": {"test": "datum.change < 0", "value": "#c43c3c"}, "value": "#16150f"}
+          }
         }
       ]
     },

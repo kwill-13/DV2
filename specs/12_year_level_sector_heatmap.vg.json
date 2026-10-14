@@ -1,0 +1,101 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": {"expr": "'Share of students at government schools, by year level: ' + place"},
+    "subtitle": "Paler = more students at Catholic and Independent schools. The dashed line marks the move from Year 6 to Year 7"
+  },
+  "width": "container",
+  "height": 460,
+  "config": {"view": {"stroke": null}},
+  "params": [
+    {
+      "name": "place",
+      "value": "Australia",
+      "bind": {
+        "input": "select",
+        "options": ["Australia", "New South Wales", "Victoria", "Queensland", "South Australia", "Western Australia", "Tasmania", "Northern Territory", "Australian Capital Territory"],
+        "name": "Place: "
+      }
+    }
+  ],
+  "data": {
+    "url": "data/enrolments_by_grade.csv",
+    "format": {"type": "csv", "parse": {"year": "number", "students": "number"}}
+  },
+  "transform": [
+    {"filter": "place === 'Australia' || datum.state === place"},
+    {"filter": "indexof(datum.grade, 'Ungraded') < 0"},
+    {
+      "calculate": "datum.grade === 'Pre-Year 1 (Foundation Year)' ? 'Foundation' : indexof(datum.grade, 'Year 7') === 0 ? 'Year 7' : datum.grade",
+      "as": "level"
+    },
+    {"calculate": "datum.grade === 'Year 7 primary' ? datum.students : 0", "as": "y7_primary_students"},
+    {"calculate": "datum.sector === 'Government' ? datum.students : 0", "as": "gov_students"},
+    {
+      "aggregate": [
+        {"op": "sum", "field": "students", "as": "students"},
+        {"op": "sum", "field": "gov_students", "as": "gov_students"},
+        {"op": "sum", "field": "y7_primary_students", "as": "y7_primary_students"}
+      ],
+      "groupby": ["year", "level"]
+    },
+    {"calculate": "datum.gov_students / datum.students * 100", "as": "gov_share"},
+    {"calculate": "100 - datum.gov_share", "as": "nongov_share"},
+    {
+      "calculate": "datum.level !== 'Year 7' ? '' : datum.y7_primary_students === 0 ? 'Secondary school' : datum.y7_primary_students === datum.students ? 'Primary school' : 'Mix of primary and secondary'",
+      "as": "y7_counted"
+    },
+    {
+      "calculate": "indexof(['Foundation', 'Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5', 'Year 6', 'Year 7', 'Year 8', 'Year 9', 'Year 10', 'Year 11', 'Year 12'], datum.level)",
+      "as": "lvl_order"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "level",
+      "type": "ordinal",
+      "title": null,
+      "sort": {"field": "lvl_order", "op": "min", "order": "ascending"},
+      "axis": {"orient": "top", "labelAngle": 0, "domain": false, "ticks": false, "labelExpr": "replace(datum.value, 'Foundation', 'Found.')"}
+    },
+    "y": {
+      "field": "year",
+      "type": "ordinal",
+      "title": null,
+      "axis": {"domain": false, "ticks": false}
+    }
+  },
+  "layer": [
+    {
+      "mark": {"type": "rect", "stroke": "#ffffff", "strokeWidth": 1, "cornerRadius": 2},
+      "encoding": {
+        "color": {
+          "field": "gov_share",
+          "type": "quantitative",
+          "title": ["At government", "schools (%)"],
+          "scale": {"domain": [52, 74], "range": ["#eef3f9", "#1d5fae"], "clamp": true}
+        },
+        "tooltip": [
+          {"field": "year", "title": "Year"},
+          {"field": "level", "title": "Year level"},
+          {"field": "gov_share", "type": "quantitative", "title": "At government schools (%)", "format": ".1f"},
+          {"field": "nongov_share", "type": "quantitative", "title": "At Catholic or Independent schools (%)", "format": ".1f"},
+          {"field": "students", "type": "quantitative", "title": "Students", "format": ","},
+          {"field": "y7_counted", "title": "Year 7 counted as"}
+        ]
+      }
+    },
+    {
+      "mark": {"type": "text", "fontSize": 10},
+      "encoding": {
+        "text": {"field": "gov_share", "type": "quantitative", "format": ".0f"},
+        "color": {"condition": {"test": "datum.gov_share >= 64", "value": "#ffffff"}, "value": "#16150f"}
+      }
+    },
+    {
+      "data": {"values": [{"level": "Year 7", "lvl_order": 7}]},
+      "mark": {"type": "rule", "strokeDash": [5, 3], "strokeWidth": 2, "color": "#16150f", "xOffset": {"expr": "-bandwidth('x') / 2"}},
+      "encoding": {"x": {"field": "level", "type": "ordinal", "sort": {"field": "lvl_order", "op": "min", "order": "ascending"}}, "y": {"value": 0}, "y2": {"value": "height"}}
+    }
+  ]
+}
