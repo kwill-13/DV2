@@ -16,3 +16,7 @@ body { font-family: system-ui, sans-serif; max-width: 1080px; margin: 0 auto; pa
 /* closing takeaways */
 .takeaways { padding-left: 20px; }
 .takeaways li { margin-bottom: 10px; }
+
+/* readable line length: about 65-75 characters (11-13 words) per line */
+body { line-height: 1.6; }
+header p, section > p, .takeaways { max-width: 34em; }
