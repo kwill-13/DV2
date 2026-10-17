@@ -1,7 +1,6 @@
 const opts = { actions: false, renderer: "svg", config: { title: { anchor: "start" } } };
 
 const charts = [
-  // Part 1: which schools
   ["#v1",  "specs/01_sector_growth.vg.json"],
   ["#v2",  "specs/02_sector_students.vg.json"],
   ["#v3",  "specs/03_sector_waffle.vg.json"],
@@ -9,7 +8,6 @@ const charts = [
   ["#v5",  "specs/05_state_sector_marimekko.vg.json"],
   ["#v6",  "specs/06_independent_dumbbell.vg.json"],
   ["#v7",  "specs/07_year_level_sector_heatmap.vg.json"],
-  // Part 2: where
   ["#v8",  "specs/08_growth_choropleth_linked.vg.json"],
   ["#v9",  "specs/09_state_contribution_waterfall.vg.json"],
   ["#v10", "specs/10_school_growth_symbols.vg.json"],
