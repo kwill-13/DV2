@@ -1,18 +1,105 @@
-body { font-family: system-ui, sans-serif; max-width: 1080px; margin: 0 auto; padding: 0 24px; }
-.vis { width: 100%; margin: 24px 0 48px; }
-/* text beside chart: lead on the left, chart on the right */
-.two { display: grid; grid-template-columns: 5fr 7fr; gap: 36px; align-items: center; margin: 24px 0 48px; }
-.two > * { min-width: 0; }
-.two .vis { margin: 0; }
-.two .text p:first-child { margin-top: 0; }
-@media (max-width: 860px) { .two { grid-template-columns: 1fr; } }
+/* ---------- base ---------- */
+:root {
+  --bg: #e9eff7;
+  --ink: #1b2333;
+  --muted: #5a6475;
+  --rule: #d3dbe8;
+  --card: #ffffff;
+  --accent: #3b2c8f;
+  /* dark text boxes */
+  --box: #1f2a44;
+  --box-text: #ffffff;
+  --box-muted: #c3cde0;
+  /* sector colours, slightly darker than the chart colours so text stays readable */
+  --gov: #1f63b8;
+  --cat: #c4531f;
+  --ind: #0e8a5f;
+}
+body { margin: 0; background: var(--bg); color: var(--ink); font: 17px/1.65 "Inter", system-ui, sans-serif; }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+h1, h2 { font-weight: 800; letter-spacing: -0.025em; }
+p { margin: 0 0 14px; }
 
-/* two charts side by side, equal width */
-.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; margin: 24px 0 48px; }
+/* about 10 words per line for running text */
+.intro, .row .text { max-width: 30em; }
+
+/* ---------- hero ---------- */
+.hero { padding: 48px 0 32px; }
+.hero h1 { font-size: clamp(38px, 5.4vw, 60px); line-height: 1.05; margin: 8px 0 18px; max-width: 24ch; }
+.dek { font-size: 22px; font-weight: 600; line-height: 1.35; margin-bottom: 14px; max-width: 30em; }
+.byline { font-size: 14px; color: var(--muted); }
+.kicker { font-size: 12.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin: 0 0 6px; }
+.hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+.hero-grid > div:first-child { max-width: 30em; }
+.kpis { display: grid; grid-template-columns: 1fr 1fr; gap: 22px 24px; }
+.kpi { border-top: 2px solid var(--ink); padding-top: 12px; }
+.kpi .num { display: block; font-size: 30px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; }
+.kpi .num.ind { color: var(--ind); }
+.kpi .lbl { display: block; font-size: 14px; line-height: 1.45; color: var(--muted); margin-top: 6px; }
+
+/* ---------- sections ---------- */
+section { border-top: 1px solid var(--rule); padding: 40px 0 8px; }
+section h2 { font-size: clamp(28px, 3.4vw, 40px); line-height: 1.15; margin: 4px 0 18px; max-width: 30ch; }
+
+/* sector names in text use the chart colours */
+.gov { color: var(--gov); font-weight: 600; }
+.cat { color: var(--cat); font-weight: 600; }
+.ind { color: var(--ind); font-weight: 600; }
+
+/* ---------- chart cards ---------- */
+.card { background: var(--card); border: 1px solid var(--rule); border-radius: 10px; box-shadow: 0 1px 3px rgba(27, 35, 51, .06); padding: 20px; margin: 20px 0 28px; overflow-x: auto; }
+.vis { width: 100%; }
+.note { font-size: 13px; line-height: 1.5; color: var(--muted); border-top: 1px solid #e6ebf3; padding-top: 10px; margin: 14px 0 0; }
+.note b { color: var(--ink); margin-right: 4px; }
+
+/* text beside a chart; .flip puts the chart on the left */
+.row { display: grid; grid-template-columns: 1fr 1.25fr; gap: 40px; align-items: center; margin: 20px 0 28px; }
+.row.flip { grid-template-columns: 1.25fr 1fr; }
+.row > * { min-width: 0; }
+.row .card { margin: 0; }
+
+/* two charts side by side */
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 20px 0 28px; }
 .pair > * { min-width: 0; }
-.pair .vis { margin: 0; }
-@media (max-width: 860px) { .pair { grid-template-columns: 1fr; } }
+.pair .card { margin: 0; }
 
-/* closing takeaways */
-.takeaways { padding-left: 20px; }
-.takeaways li { margin-bottom: 10px; }
+/* intro text in two columns (about 10 words per line each) */
+.lede { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+.lede > * { min-width: 0; }
+.lede p:last-child { margin-bottom: 0; }
+
+/* key-figure callout beside a paragraph */
+.stat { background: var(--box); color: var(--box-text); border-radius: 10px; padding: 18px 22px; }
+.stat .num { display: block; font-size: 38px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; }
+.stat .num small { font-size: 22px; color: var(--box-muted); font-weight: 600; }
+/* lighter sector colours so they read on the dark box */
+.stat .num.ind, .stat .ind { color: #5fe0b0; }
+.stat .num.gov, .stat .gov { color: #8fc2ff; }
+.stat .cat { color: #ffb07f; }
+.row .text .stat { margin-top: 18px; }
+.stat .lbl { display: block; font-size: 15px; line-height: 1.5; color: var(--box-muted); margin-top: 6px; }
+.ranks { list-style: none; margin: 10px 0 0; padding: 0; columns: 2; column-gap: 28px; }
+.ranks li { display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255, 255, 255, .15); padding: 5px 0; font-size: 15px; break-inside: avoid; }
+.ranks b { color: #8fc2ff; }
+.ranks b.down { color: #ff8f8f; }
+
+/* ---------- closing takeaways ---------- */
+.takeaways { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin: 24px 0 16px; }
+.takeaways > div { background: var(--box); color: var(--box-muted); border-radius: 10px; padding: 18px; font-size: 15px; line-height: 1.5; }
+.takeaways b { display: block; margin-bottom: 6px; color: var(--box-text); }
+
+footer { border-top: 1px solid var(--rule); margin-top: 40px; padding: 24px 0 56px; font-size: 14px; color: var(--muted); }
+footer p { margin: 0 0 6px; }
+
+/* ---------- Vega controls: above the chart ---------- */
+.vega-embed { display: flex !important; flex-direction: column; width: 100%; }
+.vega-embed .vega-bindings { order: -1; display: flex; flex-wrap: wrap; gap: 10px 26px; margin-bottom: 14px; font-size: 14px; }
+.vega-bind-name { font-weight: 600; }
+.vega-bind select, .vega-bind input[type="search"] { font: inherit; border: 1px solid #cfccc2; border-radius: 6px; padding: 5px 9px; background: #fff; }
+
+/* ---------- narrow screens ---------- */
+@media (max-width: 860px) {
+  .row, .row.flip, .pair { grid-template-columns: 1fr; }
+  .row.flip .card { order: 2; }
+  .hero-grid, .lede { grid-template-columns: 1fr; gap: 20px; }
+}

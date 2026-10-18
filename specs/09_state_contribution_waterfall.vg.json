@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {"text": "Where the 410,000 extra students came from",
-            "subtitle": "Change in school students by state, 2015 to 2025. Each bar starts where the last one ended"},
+            "subtitle": "Change in students by state, 2015 to 2025"},
   "width": "container",
   "height": 320,
   "config": {"view": {"stroke": null}},

@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
     "text": "Share of students at government schools, by remoteness, 2025",
-    "subtitle": "Full-time equivalent students. This table only splits government from non-government schools"
+    "subtitle": "Full-time equivalent students; government vs all other schools"
   },
   "width": "container",
   "height": 230,

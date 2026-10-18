@@ -1,4 +1,13 @@
-const opts = { actions: false, renderer: "svg", config: { title: { anchor: "start" } } };
+const theme = {
+  background: null,
+  font: "Inter, system-ui, sans-serif",
+  view: { stroke: null },
+  title: { anchor: "start", fontSize: 15, fontWeight: 600, color: "#1b2333", subtitleColor: "#5a6475", subtitleFontSize: 12.5 },
+  axis: { labelColor: "#52514e", titleColor: "#52514e", domainColor: "#c9c6bd", tickColor: "#c9c6bd", gridColor: "#ecebe6" },
+  legend: { labelColor: "#52514e", titleColor: "#1b2333" },
+  header: { labelColor: "#1b2333" }
+};
+const opts = { actions: false, renderer: "svg", config: theme };
 
 const charts = [
   ["#v1",  "specs/01_sector_growth.vg.json"],

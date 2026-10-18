@@ -48,8 +48,8 @@
   },
   "spacing": 8,
   "spec": {
-    "width": 205,
-    "height": 188,
+    "width": 197,
+    "height": 180,
     "projection": {
       "type": "conicEqualArea",
       "parallels": [

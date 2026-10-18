@@ -37,7 +37,7 @@
           "expr": "(metric === 'All schools' ? 'All schools' : metric + ' schools') + '. Click a state to see its sectors'"
         }
       },
-      "width": 500,
+      "width": 478,
       "height": 440,
       "projection": {
         "type": "conicEqualArea",
@@ -277,7 +277,7 @@
         },
         "subtitle": "Dashed line = the year you are comparing with"
       },
-      "width": 500,
+      "width": 478,
       "height": 440,
       "data": {
         "url": "data/sector_share_by_state_year.csv",
