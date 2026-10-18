@@ -1,0 +1,301 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Number of students, by sector",
+    "subtitle": "Students enrolled each year"
+  },
+  "width": "container",
+  "height": 300,
+  "padding": {
+    "left": 5,
+    "top": 5,
+    "right": 130,
+    "bottom": 5
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  },
+  "data": {
+    "url": "data/enrolments_national_by_sector.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "year": "number",
+        "students": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "calculate": "datum.year === 2006 ? datum.students : null",
+      "as": "base_tmp"
+    },
+    {
+      "joinaggregate": [
+        {
+          "op": "max",
+          "field": "base_tmp",
+          "as": "base"
+        }
+      ],
+      "groupby": [
+        "sector"
+      ]
+    },
+    {
+      "calculate": "(datum.students / datum.base - 1) * 100",
+      "as": "growth_pct"
+    },
+    {
+      "calculate": "datum.students",
+      "as": "value"
+    },
+    {
+      "calculate": "format(datum.students / 1e6, '.2f') + 'M'",
+      "as": "value_label"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "quantitative",
+      "title": null,
+      "scale": {
+        "domain": [
+          2006,
+          2025
+        ]
+      },
+      "axis": {
+        "format": "d",
+        "tickCount": 10,
+        "grid": false
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "strokeWidth": 2.5,
+        "interpolate": "monotone"
+      },
+      "encoding": {
+        "y": {
+          "field": "value",
+          "type": "quantitative",
+          "title": null,
+          "axis": {
+            "labelExpr": "format(datum.value / 1e6, '.1f') + 'M'"
+          }
+        },
+        "color": {
+          "field": "sector",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Government",
+              "Catholic",
+              "Independent"
+            ],
+            "range": [
+              "#2a78d6",
+              "#eb6834",
+              "#1baf7a"
+            ]
+          },
+          "legend": null
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": {
+            "param": "hover",
+            "empty": false
+          }
+        }
+      ],
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 60,
+        "stroke": "#ffffff",
+        "strokeWidth": 1.5,
+        "opacity": 1
+      },
+      "encoding": {
+        "y": {
+          "field": "value",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "sector",
+          "type": "nominal",
+          "legend": null
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.year === 2025"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 8,
+        "fontSize": 12,
+        "fontWeight": 600
+      },
+      "encoding": {
+        "y": {
+          "field": "value",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "sector",
+          "type": "nominal",
+          "legend": null
+        },
+        "text": {
+          "field": "value_label"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.year === 2025"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 52,
+        "fontSize": 12
+      },
+      "encoding": {
+        "y": {
+          "field": "value",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "sector",
+          "type": "nominal",
+          "legend": null
+        },
+        "text": {
+          "field": "sector"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "pivot": "sector",
+          "value": "students",
+          "groupby": [
+            "year"
+          ]
+        }
+      ],
+      "params": [
+        {
+          "name": "hover",
+          "select": {
+            "type": "point",
+            "fields": [
+              "year"
+            ],
+            "nearest": true,
+            "on": "pointerover",
+            "clear": "pointerout"
+          }
+        }
+      ],
+      "mark": {
+        "type": "rule",
+        "color": "#52514e",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "opacity": {
+          "condition": {
+            "param": "hover",
+            "empty": false,
+            "value": 0.45
+          },
+          "value": 0
+        },
+        "tooltip": [
+          {
+            "field": "year",
+            "type": "ordinal",
+            "title": "Year"
+          },
+          {
+            "field": "Government",
+            "type": "quantitative",
+            "format": ","
+          },
+          {
+            "field": "Catholic",
+            "type": "quantitative",
+            "format": ","
+          },
+          {
+            "field": "Independent",
+            "type": "quantitative",
+            "format": ","
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "year": 2007,
+            "y": 2000000,
+            "align": "left",
+            "sector": "Government",
+            "label": "Government schools still teach more than\nthree times as many students as either other sector"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": {
+          "expr": "datum.align"
+        },
+        "fontSize": 12,
+        "fontStyle": "italic",
+        "lineBreak": "\n",
+        "baseline": "top"
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "sector",
+          "type": "nominal",
+          "legend": null
+        },
+        "text": {
+          "field": "label"
+        }
+      }
+    }
+  ]
+}

@@ -6,3 +6,13 @@ body { font-family: system-ui, sans-serif; max-width: 1080px; margin: 0 auto; pa
 .two .vis { margin: 0; }
 .two .text p:first-child { margin-top: 0; }
 @media (max-width: 860px) { .two { grid-template-columns: 1fr; } }
+
+/* two charts side by side, equal width */
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; margin: 24px 0 48px; }
+.pair > * { min-width: 0; }
+.pair .vis { margin: 0; }
+@media (max-width: 860px) { .pair { grid-template-columns: 1fr; } }
+
+/* closing takeaways */
+.takeaways { padding-left: 20px; }
+.takeaways li { margin-bottom: 10px; }
