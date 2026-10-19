@@ -1,13 +1,14 @@
 /* ---------- base ---------- */
+/* Colour variables: defined once here, reused everywhere with var(--name) */
 :root {
-  --bg: #e9eff7;
-  --ink: #1b2333;
-  --muted: #5a6475;
-  --rule: #d3dbe8;
-  --card: #ffffff;
-  --accent: #3b2c8f;
+  --bg: #e9eff7;        /* page background (light blue-grey) */
+  --ink: #1b2333;       /* main text */
+  --muted: #5a6475;     /* secondary text: captions, labels */
+  --rule: #d3dbe8;      /* thin divider lines and card borders */
+  --card: #ffffff;      /* chart card background */
+  --accent: #3b2c8f;    /* purple section labels */
   /* dark text boxes */
-  --box: #1f2a44;
+  --box: #1f2a44;       /* navy callout and takeaway boxes */
   --box-text: #ffffff;
   --box-muted: #c3cde0;
   /* sector colours, slightly darker than the chart colours so text stays readable */
@@ -15,31 +16,31 @@
   --cat: #c4531f;
   --ind: #0e8a5f;
 }
-body { margin: 0; background: var(--bg); color: var(--ink); font: 17px/1.65 "Inter", system-ui, sans-serif; }
-.wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
-h1, h2 { font-weight: 800; letter-spacing: -0.025em; }
-p { margin: 0 0 14px; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 17px/1.65 "Inter", system-ui, sans-serif; } /* page font, size and line spacing */
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }   /* centre the page, max 1080px wide */
+h1, h2 { font-weight: 800; letter-spacing: -0.025em; }          /* heavy, slightly tight headings */
+p { margin: 0 0 14px; }                                          /* space below each paragraph */
 
 /* about 10 words per line for running text */
 .intro, .row .text { max-width: 30em; }
 
 /* ---------- hero ---------- */
-.hero { padding: 48px 0 32px; }
-.hero h1 { font-size: clamp(38px, 5.4vw, 60px); line-height: 1.05; margin: 8px 0 18px; max-width: 24ch; }
-.dek { font-size: 22px; font-weight: 600; line-height: 1.35; margin-bottom: 14px; max-width: 30em; }
-.byline { font-size: 14px; color: var(--muted); }
-.kicker { font-size: 12.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin: 0 0 6px; }
-.hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+.hero { padding: 48px 0 32px; }                                  /* space around the top block */
+.hero h1 { font-size: clamp(38px, 5.4vw, 60px); line-height: 1.05; margin: 8px 0 18px; max-width: 24ch; } /* title scales with screen width, 38-60px */
+.dek { font-size: 22px; font-weight: 600; line-height: 1.35; margin-bottom: 14px; max-width: 30em; }       /* one-line summary under the title */
+.byline { font-size: 14px; color: var(--muted); }                /* author and date */
+.kicker { font-size: 12.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin: 0 0 6px; } /* small purple label above headings */
+.hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; } /* intro left, numbers right */
 .hero-grid > div:first-child { max-width: 30em; }
-.kpis { display: grid; grid-template-columns: 1fr 1fr; gap: 22px 24px; }
-.kpi { border-top: 2px solid var(--ink); padding-top: 12px; }
-.kpi .num { display: block; font-size: 30px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; }
-.kpi .num.ind { color: var(--ind); }
-.kpi .lbl { display: block; font-size: 14px; line-height: 1.45; color: var(--muted); margin-top: 6px; }
+.kpis { display: grid; grid-template-columns: 1fr 1fr; gap: 22px 24px; }  /* 2x2 grid of headline numbers */
+.kpi { border-top: 2px solid var(--ink); padding-top: 12px; }    /* dark rule above each number */
+.kpi .num { display: block; font-size: 30px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; } /* the big number */
+.kpi .num.ind { color: var(--ind); }                             /* green when it's about Independent schools */
+.kpi .lbl { display: block; font-size: 14px; line-height: 1.45; color: var(--muted); margin-top: 6px; }      /* small label under it */
 
 /* ---------- sections ---------- */
-section { border-top: 1px solid var(--rule); padding: 40px 0 8px; }
-section h2 { font-size: clamp(28px, 3.4vw, 40px); line-height: 1.15; margin: 4px 0 18px; max-width: 30ch; }
+section { border-top: 1px solid var(--rule); padding: 40px 0 8px; }  /* divider line and space between sections */
+section h2 { font-size: clamp(28px, 3.4vw, 40px); line-height: 1.15; margin: 4px 0 18px; max-width: 30ch; } /* section headings, 28-40px */
 
 /* sector names in text use the chart colours */
 .gov { color: var(--gov); font-weight: 600; }
@@ -47,19 +48,19 @@ section h2 { font-size: clamp(28px, 3.4vw, 40px); line-height: 1.15; margin: 4px
 .ind { color: var(--ind); font-weight: 600; }
 
 /* ---------- chart cards ---------- */
-.card { background: var(--card); border: 1px solid var(--rule); border-radius: 10px; box-shadow: 0 1px 3px rgba(27, 35, 51, .06); padding: 20px; margin: 20px 0 28px; overflow-x: auto; }
-.vis { width: 100%; }
-.note { font-size: 13px; line-height: 1.5; color: var(--muted); border-top: 1px solid #e6ebf3; padding-top: 10px; margin: 14px 0 0; }
-.note b { color: var(--ink); margin-right: 4px; }
+.card { background: var(--card); border: 1px solid var(--rule); border-radius: 10px; box-shadow: 0 1px 3px rgba(27, 35, 51, .06); padding: 20px; margin: 20px 0 28px; overflow-x: auto; } /* white box around each chart; a too-wide chart scrolls inside it, not the page */
+.vis { width: 100%; }                                            /* the empty box each chart is drawn into */
+.note { font-size: 13px; line-height: 1.5; color: var(--muted); border-top: 1px solid #e6ebf3; padding-top: 10px; margin: 14px 0 0; } /* "Fig. N" caption under a chart */
+.note b { color: var(--ink); margin-right: 4px; }                /* the bold "Fig. N" */
 
 /* text beside a chart; .flip puts the chart on the left */
-.row { display: grid; grid-template-columns: 1fr 1.25fr; gap: 40px; align-items: center; margin: 20px 0 28px; }
-.row.flip { grid-template-columns: 1.25fr 1fr; }
-.row > * { min-width: 0; }
+.row { display: grid; grid-template-columns: 1fr 1.25fr; gap: 40px; align-items: center; margin: 20px 0 28px; } /* text column : chart column = 1 : 1.25 */
+.row.flip { grid-template-columns: 1.25fr 1fr; }                 /* mirrored: wider column on the left for the chart */
+.row > * { min-width: 0; }                                       /* stop a wide chart from stretching its column */
 .row .card { margin: 0; }
 
 /* two charts side by side */
-.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 20px 0 28px; }
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 20px 0 28px; } /* two equal columns */
 .pair > * { min-width: 0; }
 .pair .card { margin: 0; }
 
@@ -69,37 +70,38 @@ section h2 { font-size: clamp(28px, 3.4vw, 40px); line-height: 1.15; margin: 4px
 .lede p:last-child { margin-bottom: 0; }
 
 /* key-figure callout beside a paragraph */
-.stat { background: var(--box); color: var(--box-text); border-radius: 10px; padding: 18px 22px; }
-.stat .num { display: block; font-size: 38px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; }
-.stat .num small { font-size: 22px; color: var(--box-muted); font-weight: 600; }
+.stat { background: var(--box); color: var(--box-text); border-radius: 10px; padding: 18px 22px; } /* navy box */
+.stat .num { display: block; font-size: 38px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; } /* the big figure */
+.stat .num small { font-size: 22px; color: var(--box-muted); font-weight: 600; }  /* smaller "vs", "→", "pts" inside it */
 /* lighter sector colours so they read on the dark box */
 .stat .num.ind, .stat .ind { color: #5fe0b0; }
 .stat .num.gov, .stat .gov { color: #8fc2ff; }
 .stat .cat { color: #ffb07f; }
-.row .text .stat { margin-top: 18px; }
-.stat .lbl { display: block; font-size: 15px; line-height: 1.5; color: var(--box-muted); margin-top: 6px; }
-.ranks { list-style: none; margin: 10px 0 0; padding: 0; columns: 2; column-gap: 28px; }
-.ranks li { display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255, 255, 255, .15); padding: 5px 0; font-size: 15px; break-inside: avoid; }
-.ranks b { color: #8fc2ff; }
-.ranks b.down { color: #ff8f8f; }
+.row .text .stat { margin-top: 18px; }                           /* gap above a callout under text */
+.stat .lbl { display: block; font-size: 15px; line-height: 1.5; color: var(--box-muted); margin-top: 6px; } /* caption under the figure */
+.ranks { list-style: none; margin: 10px 0 0; padding: 0; columns: 2; column-gap: 28px; }  /* ranked states list, in two columns */
+.ranks li { display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255, 255, 255, .15); padding: 5px 0; font-size: 15px; break-inside: avoid; } /* name left, value right */
+.ranks b { color: #8fc2ff; }                                     /* growth values in light blue */
+.ranks b.down { color: #ff8f8f; }                                /* decreases in light red */
 
 /* ---------- closing takeaways ---------- */
-.takeaways { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin: 24px 0 16px; }
-.takeaways > div { background: var(--box); color: var(--box-muted); border-radius: 10px; padding: 18px; font-size: 15px; line-height: 1.5; }
-.takeaways b { display: block; margin-bottom: 6px; color: var(--box-text); }
+.takeaways { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin: 24px 0 16px; } /* as many 180px+ cards per row as fit */
+.takeaways > div { background: var(--box); color: var(--box-muted); border-radius: 10px; padding: 18px; font-size: 15px; line-height: 1.5; } /* navy takeaway card */
+.takeaways b { display: block; margin-bottom: 6px; color: var(--box-text); } /* bold heading on its own line */
 
-footer { border-top: 1px solid var(--rule); margin-top: 40px; padding: 24px 0 56px; font-size: 14px; color: var(--muted); }
+footer { border-top: 1px solid var(--rule); margin-top: 40px; padding: 24px 0 56px; font-size: 14px; color: var(--muted); } /* sources and author */
 footer p { margin: 0 0 6px; }
 
 /* ---------- Vega controls: above the chart ---------- */
-.vega-embed { display: flex !important; flex-direction: column; width: 100%; }
-.vega-embed .vega-bindings { order: -1; display: flex; flex-wrap: wrap; gap: 10px 26px; margin-bottom: 14px; font-size: 14px; }
-.vega-bind-name { font-weight: 600; }
-.vega-bind select, .vega-bind input[type="search"] { font: inherit; border: 1px solid #cfccc2; border-radius: 6px; padding: 5px 9px; background: #fff; }
+.vega-embed { display: flex !important; flex-direction: column; width: 100%; }  /* stack chart and controls vertically */
+.vega-embed .vega-bindings { order: -1; display: flex; flex-wrap: wrap; gap: 10px 26px; margin-bottom: 14px; font-size: 14px; } /* order -1 moves controls above the chart */
+.vega-bind-name { font-weight: 600; }                            /* control labels, e.g. "State:" */
+.vega-bind select, .vega-bind input[type="search"] { font: inherit; border: 1px solid #cfccc2; border-radius: 6px; padding: 5px 9px; background: #fff; } /* dropdowns and search box */
 
 /* ---------- narrow screens ---------- */
+/* Below 860px (phones, small tablets) every two-column layout becomes one column */
 @media (max-width: 860px) {
   .row, .row.flip, .pair { grid-template-columns: 1fr; }
-  .row.flip .card { order: 2; }
+  .row.flip .card { order: 2; }                                  /* keep text above the chart when stacked */
   .hero-grid, .lede { grid-template-columns: 1fr; gap: 20px; }
 }
