@@ -13,17 +13,23 @@
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 </head>
 <body>
+  <!-- wrap: one container around the whole page. CSS caps it at 1080px wide and centres it,
+       so the content doesn't stretch across wide screens. -->
   <div class="wrap">
 
   <header class="hero">
     <p class="kicker">FIT3179 Data Visualisation 2 · A data story</p>
     <h1>How Australia's School Enrolments Changed, 2006–2025</h1>
+    <!-- hero-grid: two columns under the title, intro text on the left and headline numbers
+         on the right. Stacks into one column on narrow screens. -->
     <div class="hero-grid">
       <div>
         <p class="dek">Australia has 767,000 more school students than 20 years ago.</p>
         <p>This page follows those students: which school sectors grew fastest, the point in school when families move between sectors, and where the growth landed, from whole states down to suburbs and remote communities.</p>
         <p class="byline">By William Koo · October 2026</p>
       </div>
+      <!-- kpis: 2x2 grid of headline numbers. In each .kpi, .num is the big figure and .lbl
+           the small grey label; adding "ind" to .num colours it Independent green. -->
       <div class="kpis">
       <div class="kpi"><span class="num">+767,000</span><span class="lbl">more school students in 2025 than in 2006</span></div>
       <div class="kpi"><span class="num ind">17 in 100</span><span class="lbl">students now at an Independent school, up from 13</span></div>
@@ -36,14 +42,21 @@
   <section id="trend">
     <p class="kicker">01 · Sectors</p>
     <h2>Every sector grew, but not at the same pace</h2>
+    <!-- lede: section intro in two side-by-side columns (two paragraphs, or a paragraph
+         and a .stat callout). Keeps lines to about 10 words. Stacks on narrow screens. -->
     <div class="lede">
+      <!-- gov / ind / cat: colour a sector name in the text to match the charts
+           (government blue, Independent green, Catholic orange). -->
       <p>Between 2006 and 2025, school enrolments rose by 23%, and every sector gained students. <span class="gov">Government schools</span> still added the most, about 343,000. But <span class="ind">Independent schools</span> grew four times as fast: up 62%, against 22% for <span class="cat">Catholic schools</span> and 15% for <span class="gov">government schools</span>.</p>
       <p>The gap has widened since 2020. Government enrolments have levelled off, while Independent schools added another 117,000 students in five years. Yet <span class="gov">government schools</span> still teach more than three times as many students as either other sector.</p>
     </div>
+    <!-- pair: two charts side by side at equal width, each in its own .card. -->
     <div class="pair">
       <figure class="card"><div id="v1" class="vis"></div><figcaption class="note"><b>Fig. 1</b> Change since 2006. Hover for each year's numbers. Source: ABS, Schools 2025.</figcaption></figure>
       <figure class="card"><div id="v2" class="vis"></div><figcaption class="note"><b>Fig. 2</b> Students enrolled each year. Hover for each year's numbers. Source: ABS, Schools 2025.</figcaption></figure>
     </div>
+    <!-- row: text beside a chart. The first child (.text) goes in the narrower left column,
+         the chart card in the wider right column. Stacks on narrow screens. -->
     <div class="row">
       <div class="text">
         <p>Faster growth has shifted the mix. Of every 100 school students in 2006, 13 were at an <span class="ind">Independent school</span>. By 2025 it was 17.</p>
@@ -67,6 +80,8 @@
       <div class="stat"><span class="num ind">209,000</span><span class="lbl">Independent students in New South Wales in 2025, nearly four times South Australia's 56,000</span></div>
     </div>
     <figure class="card"><div id="v5" class="vis"></div><figcaption class="note"><b>Fig. 5</b> Column width = the state's share of all students; height = its sector split. Hover for exact numbers. Source: ABS, Schools 2025.</figcaption></figure>
+    <!-- row flip: same as .row but mirrored. The chart comes first in the HTML, so it sits
+         in the wider left column with the text on the right. Alternating sides varies the page. -->
     <div class="row flip">
       <figure class="card"><div id="v6" class="vis"></div><figcaption class="note"><b>Fig. 6</b> Light dot = 2015, dark dot = 2025. Source: ABS, Schools 2025.</figcaption></figure>
       <div class="text">
