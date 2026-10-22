@@ -1,12 +1,16 @@
-// Shared styling for every chart, so fonts and colours match without repeating them in 14 specs.
+// Shared styling for every chart: same type pairing and ink colours as the page, without repeating them in 14 specs.
 const theme = {
-  background: null,                         // transparent: the white card behind shows through
-  font: "Inter, system-ui, sans-serif",     // same typeface as the page text
-  view: { stroke: null },                   // no box around each plot area
-  title: { anchor: "start", fontSize: 15, fontWeight: 600, color: "#1b2333", subtitleColor: "#5a6475", subtitleFontSize: 12.5 }, // left-aligned titles
-  axis: { labelColor: "#52514e", titleColor: "#52514e", domainColor: "#c9c6bd", tickColor: "#c9c6bd", gridColor: "#ecebe6" },   // soft grey axes and grid
-  legend: { labelColor: "#52514e", titleColor: "#1b2333" },
-  header: { labelColor: "#1b2333" }         // labels above small multiples / facets
+  background: null,                                   // transparent: the paper shows through
+  font: "IBM Plex Sans, system-ui, sans-serif",            // sans-serif for all chart content, as on the page
+  view: { stroke: null },                             // no box around each plot area
+  title: { anchor: "start", font: "Instrument Serif, Georgia, serif", fontSize: 22, fontWeight: 400, color: "#161513",
+           subtitleFont: "IBM Plex Sans, system-ui, sans-serif", subtitleFontSize: 13, subtitleColor: "#57534b", subtitlePadding: 4 }, // serif title, sans-serif subtitle
+  axis: { labelFont: "IBM Plex Sans, system-ui, sans-serif", labelFontSize: 11.5, labelColor: "#57534b",
+          titleFont: "IBM Plex Sans, system-ui, sans-serif", titleFontSize: 12.5, titleFontWeight: 400, titleColor: "#57534b",
+          domainColor: "#161513", tickColor: "#161513", gridColor: "#ddd7cb" },   // ink axis lines, faint grid
+  legend: { labelFont: "IBM Plex Sans, system-ui, sans-serif", labelFontSize: 12.5, labelColor: "#57534b",
+            titleFont: "IBM Plex Sans, system-ui, sans-serif", titleFontSize: 12.5, titleFontWeight: 600, titleColor: "#161513" },
+  header: { labelFont: "IBM Plex Sans, system-ui, sans-serif", labelFontSize: 15, labelColor: "#161513" }   // labels above small multiples / facets
 };
 
 // Options for every chart: no "..." export menu, draw as crisp SVG, apply the theme above.
@@ -32,3 +36,15 @@ const charts = [
 
 // Draw each chart into its box. If one spec fails, log which file it was so the others still load.
 charts.forEach(([el, url]) => vegaEmbed(el, url, opts).catch(err => console.error(url, err)));
+
+// Turn every <i data-lucide="name"> into its icon.
+if (window.lucide) lucide.createIcons();
+
+// Fade blocks in as they scroll into view. The class is added here, so without JavaScript everything just shows.
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); revealObserver.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll(".chapter-head, .lede, .viz, .row .text, .pair, .takeaways li, .figures").forEach(el => {
+  el.classList.add("reveal");
+  revealObserver.observe(el);
+});

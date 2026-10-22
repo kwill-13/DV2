@@ -33,7 +33,7 @@
             "y2": {"field": "end"},
             "color": {"field": "kind", "type": "nominal", "title": null,
                       "scale": {"domain": ["Added students", "Lost students", "Australia total"],
-                                "range": ["#3b2c8f", "#c43c3c", "#52514e"]},
+                                "range": ["#2b2925", "#c43c3c", "#a39d90"]},
                       "legend": {"orient": "top"}},
             "tooltip": [{"field": "state", "title": "State"},
                         {"field": "students_2015", "type": "quantitative", "title": "Students 2015", "format": ","},

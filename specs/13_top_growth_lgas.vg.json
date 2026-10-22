@@ -57,7 +57,7 @@
           "field": "source",
           "type": "nominal",
           "title": null,
-          "scale": {"domain": ["At new schools", "Growth at existing schools"], "range": ["#3b2c8f", "#a49be0"]},
+          "scale": {"domain": ["At new schools", "Growth at existing schools"], "range": ["#2b2925", "#b4ad9f"]},
           "legend": {"orient": "top"}
         },
         "tooltip": [
