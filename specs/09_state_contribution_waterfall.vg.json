@@ -33,7 +33,7 @@
             "y2": {"field": "end"},
             "color": {"field": "kind", "type": "nominal", "title": null,
                       "scale": {"domain": ["Added students", "Lost students", "Australia total"],
-                                "range": ["#2b2925", "#c43c3c", "#a39d90"]},
+                                "range": ["#13875a", "#e0402a", "#161513"]},
                       "legend": {"orient": "top"}},
             "tooltip": [{"field": "state", "title": "State"},
                         {"field": "students_2015", "type": "quantitative", "title": "Students 2015", "format": ","},
@@ -43,7 +43,7 @@
         },
         {
           "transform": [{"filter": "datum.change < 0"}],
-          "mark": {"type": "point", "shape": "triangle-down", "filled": true, "size": 140, "color": "#c43c3c", "opacity": 1, "yOffset": 7},
+          "mark": {"type": "point", "shape": "triangle-down", "filled": true, "size": 140, "color": "#e0402a", "opacity": 1, "yOffset": 7},
           "encoding": {"y": {"field": "end", "type": "quantitative"}}
         },
         {
@@ -51,7 +51,7 @@
           "encoding": {
             "y": {"field": "top", "type": "quantitative"},
             "text": {"field": "change_label"},
-            "color": {"condition": {"test": "datum.change < 0", "value": "#c43c3c"}, "value": "#16150f"}
+            "color": {"condition": {"test": "datum.change < 0", "value": "#e0402a"}, "value": "#16150f"}
           }
         }
       ]

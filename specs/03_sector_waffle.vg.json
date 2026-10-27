@@ -43,7 +43,7 @@
       "field": "sector",
       "type": "nominal",
       "title": null,
-      "scale": {"domain": ["Government", "Catholic", "Independent"], "range": ["#2a78d6", "#eb6834", "#1baf7a"]},
+      "scale": {"domain": ["Government", "Catholic", "Independent"], "range": ["#1a47c4", "#d42a7f", "#0899c0"]},
       "legend": {"orient": "top", "symbolType": "square"}
     },
     "tooltip": [

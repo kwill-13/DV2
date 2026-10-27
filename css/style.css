@@ -2,14 +2,14 @@
 /* Two-colour newsprint palette: paper and ink. Greys are tints of the ink.
    Sector colours appear only where they encode data (chart key, sector names in text). */
 :root {
-  --paper: #f2eee6;        /* newsprint */
+  --paper: #f7f4ee;        /* bright newsprint */
   --ink: #161513;          /* printing ink */
   --ink-2: #57534b;        /* ink at ~70%: secondary text */
   --ink-3: #a39d90;        /* ink at ~35%: hairlines */
-  /* sector colours, darkened slightly so they read as text on paper */
-  --gov: #1f63b8;
-  --cat: #c4531f;
-  --ind: #0e8a5f;
+  /* sector colours: exactly the chart colours (cobalt, magenta, cyan: the three process inks) */
+  --gov: #1a47c4;
+  --cat: #d42a7f;
+  --ind: #0899c0;
   --serif: "Instrument Serif", Georgia, serif;          /* display headings and big figures */
   --sans: "IBM Plex Sans", system-ui, sans-serif;        /* all content, subtitles, labels and charts */
   --indent: 200px;         /* left margin column for chapter labels and body text */
@@ -35,7 +35,7 @@ svg.lucide { width: 15px; height: 15px; stroke-width: 1.75; vertical-align: -2px
 /* asymmetric: wide text column, narrower printed photo */
 .hero { padding: 96px 0 0; }
 .hero-grid { display: grid; grid-template-columns: 7fr 5fr; gap: 56px; align-items: end; }
-.hero-number { font: 400 clamp(84px, 13vw, 172px)/.86 var(--serif); letter-spacing: -0.03em; margin: 0 0 6px; }
+.hero-number { font: 400 clamp(84px, 13vw, 172px)/.86 var(--serif); letter-spacing: -0.03em; margin: 0 0 .2em; } /* bottom margin in em leaves room for the comma's tail at any size */
 .hero-sub { font: 19px/1.4 var(--sans); color: var(--ink-2); margin-bottom: 36px; }
 .hero h1 { font-size: clamp(40px, 5vw, 64px); line-height: 1; max-width: 16ch; margin-bottom: 28px; } /* main title, first on the page */
 .hero-intro { max-width: 30em; }
@@ -95,8 +95,8 @@ svg.lucide { width: 15px; height: 15px; stroke-width: 1.75; vertical-align: -2px
 .stat .lbl.strong { color: var(--ink); margin: 0 0 6px; }
 .ranks { list-style: none; margin: 0; padding: 0; columns: 2; column-gap: 28px; font: 15px/1.4 var(--sans); }
 .ranks li { display: flex; justify-content: space-between; border-bottom: 1px solid var(--ink-3); padding: 6px 0; break-inside: avoid; }
-.ranks b { font-weight: 600; }
-.ranks b.down { color: #c43c3c; }
+.ranks b { font-weight: 600; color: #13875a; }   /* same as the waterfall: emerald = added students */
+.ranks b.down { color: #e0402a; }                /* vermilion = lost students */
 
 /* ================= summary: printed in reverse ================= */
 .summary { background: var(--ink); color: var(--paper); padding-bottom: 56px; }

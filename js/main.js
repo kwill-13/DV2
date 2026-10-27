@@ -7,7 +7,7 @@ const theme = {
            subtitleFont: "IBM Plex Sans, system-ui, sans-serif", subtitleFontSize: 13, subtitleColor: "#57534b", subtitlePadding: 4 }, // serif title, sans-serif subtitle
   axis: { labelFont: "IBM Plex Sans, system-ui, sans-serif", labelFontSize: 11.5, labelColor: "#57534b",
           titleFont: "IBM Plex Sans, system-ui, sans-serif", titleFontSize: 12.5, titleFontWeight: 400, titleColor: "#57534b",
-          domainColor: "#161513", tickColor: "#161513", gridColor: "#ddd7cb" },   // ink axis lines, faint grid
+          domainColor: "#161513", tickColor: "#161513", gridColor: "#e2ddd2" },   // ink axis lines, faint grid
   legend: { labelFont: "IBM Plex Sans, system-ui, sans-serif", labelFontSize: 12.5, labelColor: "#57534b",
             titleFont: "IBM Plex Sans, system-ui, sans-serif", titleFontSize: 12.5, titleFontWeight: 600, titleColor: "#161513" },
   header: { labelFont: "IBM Plex Sans, system-ui, sans-serif", labelFontSize: 15, labelColor: "#161513" }   // labels above small multiples / facets
@@ -34,8 +34,11 @@ const charts = [
   ["#v14", "specs/14_remoteness_sector.vg.json"]
 ];
 
+// Bump this (and the ?v= in index.html) after changing the files, so browsers fetch the new copies instead of cached ones.
+const version = 2;
+
 // Draw each chart into its box. If one spec fails, log which file it was so the others still load.
-charts.forEach(([el, url]) => vegaEmbed(el, url, opts).catch(err => console.error(url, err)));
+charts.forEach(([el, url]) => vegaEmbed(el, `${url}?v=${version}`, opts).catch(err => console.error(url, err)));
 
 // Turn every <i data-lucide="name"> into its icon.
 if (window.lucide) lucide.createIcons();

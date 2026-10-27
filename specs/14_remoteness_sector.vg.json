@@ -55,7 +55,7 @@
           "field": "sector_label",
           "type": "nominal",
           "title": null,
-          "scale": {"domain": ["Government", "Catholic & Independent"], "range": ["#2a78d6", "#c9c7c0"]},
+          "scale": {"domain": ["Government", "Catholic & Independent"], "range": ["#1a47c4", "#cfc9bd"]},
           "legend": {"orient": "top"}
         },
         "order": {"field": "sector_label", "sort": "descending"},

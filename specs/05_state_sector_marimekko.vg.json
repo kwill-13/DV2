@@ -2,8 +2,9 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": "container",
   "height": 320,
+  "padding": {"left": 5, "top": 5, "right": 5, "bottom": 5},
   "title": {"text": "How big each state is, and how its students split by sector, 2025",
-            "subtitle": "Column width = state's share of all Australian students. White numbers = % at Independent schools"},
+            "subtitle": ["Column width = state's share of all Australian students. Numbers = % of the state's students in each sector", "Tas, ACT and NT are too narrow, so arrows point to their numbers on the right"]},
   "config": {"view": {"stroke": null}},
   "data": {"url": "data/sector_share_by_state_year.csv",
            "format": {"type": "csv", "parse": {"year": "number", "students": "number", "share_pct": "number"}}},
@@ -35,7 +36,7 @@
         "y2": {"field": "y1"},
         "color": {"field": "sector", "type": "nominal", "title": null,
                   "scale": {"domain": ["Government", "Catholic", "Independent"],
-                            "range": ["#2a78d6", "#eb6834", "#1baf7a"]},
+                            "range": ["#1a47c4", "#d42a7f", "#0899c0"]},
                   "legend": {"orient": "top"}},
         "tooltip": [{"field": "state", "title": "State"}, {"field": "sector"},
                     {"field": "students", "type": "quantitative", "format": ","},
@@ -50,11 +51,38 @@
                    "text": {"field": "state_abbr"}}
     },
     {
-      "transform": [{"filter": "datum.sector === 'Independent' && datum.state_pct > 0.035"}],
-      "mark": {"type": "text", "baseline": "middle", "color": "#ffffff", "fontWeight": 600, "fontSize": 11},
+      "transform": [
+        {"filter": "datum.state_pct <= 0.035"},
+        {"pivot": "sector", "value": "share_pct", "groupby": ["state_abbr", "x_mid"]},
+        {"window": [{"op": "row_number", "as": "rank"}], "sort": [{"field": "x_mid"}]},
+        {"calculate": "1.05 - 0.27 * datum.rank", "as": "call_y"}
+      ],
+      "layer": [
+        {"mark": {"type": "rule", "color": "#161513", "strokeWidth": 1, "x2Offset": 6},
+         "encoding": {"x": {"field": "x_mid", "type": "quantitative"}, "x2": {"datum": 1},
+                      "y": {"field": "call_y", "type": "quantitative"}}},
+        {"mark": {"type": "point", "shape": "triangle-left", "filled": true, "size": 40, "color": "#161513", "opacity": 1},
+         "encoding": {"x": {"field": "x_mid", "type": "quantitative"}, "y": {"field": "call_y", "type": "quantitative"}}},
+        {"mark": {"type": "text", "align": "left", "baseline": "middle", "dx": 10, "fontWeight": 600, "fontSize": 12, "color": "#161513"},
+         "encoding": {"x": {"datum": 1}, "y": {"field": "call_y", "type": "quantitative"}, "text": {"field": "state_abbr"}}},
+        {"mark": {"type": "text", "align": "left", "baseline": "middle", "dx": 44, "fontWeight": 600, "fontSize": 12, "color": "#1a47c4"},
+         "encoding": {"x": {"datum": 1}, "y": {"field": "call_y", "type": "quantitative"},
+                      "text": {"field": "Government", "type": "quantitative", "format": ".0f"}}},
+        {"mark": {"type": "text", "align": "left", "baseline": "middle", "dx": 68, "fontWeight": 600, "fontSize": 12, "color": "#d42a7f"},
+         "encoding": {"x": {"datum": 1}, "y": {"field": "call_y", "type": "quantitative"},
+                      "text": {"field": "Catholic", "type": "quantitative", "format": ".0f"}}},
+        {"mark": {"type": "text", "align": "left", "baseline": "middle", "dx": 92, "fontWeight": 600, "fontSize": 12, "color": "#0899c0"},
+         "encoding": {"x": {"datum": 1}, "y": {"field": "call_y", "type": "quantitative"},
+                      "text": {"field": "Independent", "type": "quantitative", "format": ".0f"}}}
+      ]
+    },
+    {
+      "transform": [{"filter": "datum.state_pct > 0.035"}],
+      "mark": {"type": "text", "baseline": "middle", "fontWeight": 600, "fontSize": 12},
       "encoding": {"x": {"field": "x_mid", "type": "quantitative"},
                    "y": {"field": "y_mid", "type": "quantitative"},
-                   "text": {"field": "share_pct", "type": "quantitative", "format": ".0f"}}
+                   "text": {"field": "share_pct", "type": "quantitative", "format": ".0f"},
+                   "color": {"condition": {"test": "datum.sector === 'Independent'", "value": "#161513"}, "value": "#ffffff"}}
     }
   ]
 }

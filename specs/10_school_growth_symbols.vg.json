@@ -49,7 +49,7 @@
         "url": "data/geo/australia_states_detail.topojson",
         "format": {"type": "topojson", "feature": "states"}
       },
-      "mark": {"type": "geoshape", "fill": "#efeeea", "stroke": "#b9b8b2", "strokeWidth": 0.8, "clip": true}
+      "mark": {"type": "geoshape", "fill": "#ebe6dc", "stroke": "#b9b8b2", "strokeWidth": 0.8, "clip": true}
     },
     {
       "data": {
@@ -83,7 +83,7 @@
           "field": "change_pct",
           "type": "quantitative",
           "title": "Change since 2015 (%)",
-          "scale": {"domain": [-50, 0, 100], "range": ["#c43c3c", "#e6e4df", "#2b2925"], "clamp": true},
+          "scale": {"domain": [-50, 0, 100], "range": ["#e0402a", "#ece8df", "#0b6b43"], "clamp": true},
           "legend": {"orient": "top-right", "direction": "horizontal", "gradientLength": 160, "titleLimit": 0, "labelOverlap": false, "fillColor": "rgba(255,255,255,0.85)", "padding": 6, "values": [-50, 0, 50, 100], "labelExpr": "(datum.value > 0 ? '+' : '') + datum.value + (datum.value === 100 ? '+' : '')"}
         },
         "opacity": {"condition": {"test": "search === '' || datum.match", "value": 0.85}, "value": 0.08},

@@ -32,7 +32,7 @@
   },
   "layer": [
     {
-      "mark": {"type": "rule", "color": "#a9a8a3", "strokeWidth": 2.5},
+      "mark": {"type": "rule", "color": "#c9c4b8", "strokeWidth": 2.5},
       "encoding": {
         "x": {"aggregate": "min", "field": "share", "type": "quantitative"},
         "x2": {"aggregate": "max", "field": "share"}
@@ -45,7 +45,7 @@
           "field": "Year",
           "type": "nominal",
           "title": null,
-          "scale": {"domain": ["2015", "2025"], "range": ["#9ad9bf", "#0b7a52"]},
+          "scale": {"domain": ["2015", "2025"], "range": ["#9fd6ea", "#05607e"]},
           "legend": {"orient": "top"}
         },
         "tooltip": [
@@ -61,7 +61,7 @@
       "encoding": {
         "x": {"field": "right_end", "type": "quantitative"},
         "text": {"field": "gain_label"},
-        "color": {"condition": {"test": "datum.gain < 0", "value": "#c43c3c"}, "value": "#0b7a52"}
+        "color": {"condition": {"test": "datum.gain < 0", "value": "#e0402a"}, "value": "#05607e"}
       }
     }
   ]

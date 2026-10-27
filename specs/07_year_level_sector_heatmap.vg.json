@@ -73,7 +73,7 @@
           "field": "gov_share",
           "type": "quantitative",
           "title": ["At government", "schools (%)"],
-          "scale": {"domain": [52, 74], "range": ["#eef3f9", "#1d5fae"], "clamp": true}
+          "scale": {"domain": [52, 74], "range": ["#eaf0fd", "#1a47c4"], "clamp": true}
         },
         "tooltip": [
           {"field": "year", "title": "Year"},
