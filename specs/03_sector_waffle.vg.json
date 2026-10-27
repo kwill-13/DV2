@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {"text": "Out of every 100 students", "subtitle": "One square = 1% of all school students in that year"},
   "width": "container",
-  "height": 360,
+  "height": 180,
   "config": {"view": {"stroke": null}},
   "data": {
     "url": "data/enrolments_national_by_sector.csv",
@@ -31,7 +31,7 @@
       "scale": {"domain": [0, 1, 2, 3, 4, 5, 6, 7, 8]},
       "axis": {
         "labelExpr": "datum.value === 0 ? '2006' : datum.value === 5 ? '2025' : ''",
-        "labelFontSize": 15,
+        "labelFontSize": 13,
         "labelFontWeight": 600,
         "labelBaseline": "top",
         "labelPadding": 10,

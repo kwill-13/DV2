@@ -29,11 +29,6 @@
       "name": "sector",
       "value": "All",
       "bind": {"input": "select", "options": ["All", "Government", "Catholic", "Independent"], "name": "Sector: "}
-    },
-    {
-      "name": "search",
-      "value": "",
-      "bind": {"input": "search", "placeholder": "e.g. Tarneit", "name": "Find a school or suburb: "}
     }
   ],
   "projection": {
@@ -62,11 +57,7 @@
       "transform": [
         {"filter": "datum.status === 'Open in 2015'"},
         {"calculate": "{'G': 'Government', 'C': 'Catholic', 'I': 'Independent'}[datum.sector]", "as": "sector_name"},
-        {"filter": "sector === 'All' || datum.sector_name === sector"},
-        {
-          "calculate": "search !== '' && (indexof(lower(datum.name), lower(search)) >= 0 || indexof(lower(datum.suburb), lower(search)) >= 0)",
-          "as": "match"
-        }
+        {"filter": "sector === 'All' || datum.sector_name === sector"}
       ],
       "mark": {"type": "circle", "clip": true, "stroke": "#ffffff", "strokeWidth": 0.4},
       "encoding": {
@@ -86,7 +77,7 @@
           "scale": {"domain": [-50, 0, 100], "range": ["#e0402a", "#ece8df", "#0b6b43"], "clamp": true},
           "legend": {"orient": "top-right", "direction": "horizontal", "gradientLength": 160, "titleLimit": 0, "labelOverlap": false, "fillColor": "rgba(255,255,255,0.85)", "padding": 6, "values": [-50, 0, 50, 100], "labelExpr": "(datum.value > 0 ? '+' : '') + datum.value + (datum.value === 100 ? '+' : '')"}
         },
-        "opacity": {"condition": {"test": "search === '' || datum.match", "value": 0.85}, "value": 0.08},
+        "opacity": {"value": 0.85},
         "order": {"field": "enrolments", "sort": "descending"},
         "tooltip": [
           {"field": "name", "title": "School"},
@@ -132,7 +123,7 @@
           }
         },
         {
-          "mark": {"type": "text", "dy": -11, "fontSize": 12, "fontWeight": 700, "color": "#16150f", "clip": true},
+          "mark": {"type": "text", "dy": -11, "fontSize": 11, "fontWeight": 700, "color": "#16150f", "clip": true},
           "encoding": {
             "longitude": {"field": "lon", "type": "quantitative"},
             "latitude": {"field": "lat", "type": "quantitative"},

@@ -5,7 +5,8 @@
     "subtitle": "Students at schools opened since 2015, plus growth at schools that were already open"
   },
   "width": "container",
-  "height": 360,
+  "padding": {"left": 5, "top": 5, "right": 50, "bottom": 5},
+  "height": 300,
   "config": {"view": {"stroke": null}},
   "data": {
     "url": "data/schools_web.csv",

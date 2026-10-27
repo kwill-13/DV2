@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
     "text": "How big are new schools?",
-    "subtitle": "Spread of school sizes in 2025. Higher curve = more schools of that size. Dashed line = typical (middle) size"
+    "subtitle": ["Each curve shows how one group's schools are spread across sizes, 2025", "Higher curve = more schools of that size. Dashed line = typical (middle) size"]
   },
   "data": {
     "url": "data/schools_web.csv",
@@ -40,7 +40,7 @@
   },
   "spacing": 12,
   "spec": {
-    "width": 900,
+    "width": 825,
     "height": 100,
     "layer": [
       {
@@ -88,13 +88,10 @@
             "field": "pct",
             "type": "quantitative",
             "stack": null,
-            "title": [
-              "% of schools",
-              "per 100 students"
-            ],
+            "title": "Share of schools",
             "axis": {
-              "format": ".0f",
-              "titleFontSize": 10,
+              "labelExpr": "datum.value + '%'",
+              "titleFontSize": 11,
               "titleFontWeight": 400,
               "titleColor": "#52514e",
               "grid": true,

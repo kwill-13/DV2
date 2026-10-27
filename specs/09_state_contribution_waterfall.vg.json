@@ -3,7 +3,7 @@
   "title": {"text": "Where the 410,000 extra students came from",
             "subtitle": "Change in students by state, 2015 to 2025"},
   "width": "container",
-  "height": 320,
+  "height": 260,
   "config": {"view": {"stroke": null}},
   "data": {"url": "data/state_summary_2025.csv",
            "format": {"type": "csv", "parse": {"students_2015": "number", "students_2025": "number"}}},
@@ -47,7 +47,7 @@
           "encoding": {"y": {"field": "end", "type": "quantitative"}}
         },
         {
-          "mark": {"type": "text", "baseline": "bottom", "dy": -4, "fontSize": 12, "fontWeight": 600},
+          "mark": {"type": "text", "baseline": "bottom", "dy": -4, "fontSize": 11, "fontWeight": 600},
           "encoding": {
             "y": {"field": "top", "type": "quantitative"},
             "text": {"field": "change_label"},
@@ -81,7 +81,7 @@
           }
         },
         {
-          "mark": {"type": "text", "baseline": "bottom", "dy": -4, "fontSize": 12, "fontWeight": 700},
+          "mark": {"type": "text", "baseline": "bottom", "dy": -4, "fontSize": 11, "fontWeight": 700},
           "encoding": {"y": {"field": "change", "type": "quantitative"}, "text": {"field": "change_label"}}
         }
       ]

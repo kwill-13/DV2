@@ -9,7 +9,7 @@
   "padding": {
     "left": 5,
     "top": 5,
-    "right": 130,
+    "right": 5,
     "bottom": 5
   },
   "config": {
@@ -149,7 +149,7 @@
         "type": "text",
         "align": "left",
         "dx": 8,
-        "fontSize": 12,
+        "fontSize": 11,
         "fontWeight": 600
       },
       "encoding": {
@@ -177,7 +177,7 @@
         "type": "text",
         "align": "left",
         "dx": 52,
-        "fontSize": 12
+        "fontSize": 11
       },
       "encoding": {
         "y": {
@@ -273,7 +273,7 @@
         "align": {
           "expr": "datum.align"
         },
-        "fontSize": 12,
+        "fontSize": 11,
         "fontStyle": "italic",
         "lineBreak": "\n",
         "baseline": "top"

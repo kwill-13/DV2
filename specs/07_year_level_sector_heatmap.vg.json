@@ -86,7 +86,7 @@
       }
     },
     {
-      "mark": {"type": "text", "fontSize": 10},
+      "mark": {"type": "text", "fontSize": 11},
       "encoding": {
         "text": {"field": "gov_share", "type": "quantitative", "format": ".0f"},
         "color": {"condition": {"test": "datum.gov_share >= 64", "value": "#ffffff"}, "value": "#16150f"}

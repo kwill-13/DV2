@@ -37,7 +37,7 @@
           "expr": "(metric === 'All schools' ? 'All schools' : metric + ' schools') + '. Click a state to see its sectors'"
         }
       },
-      "width": 478,
+      "width": 440,
       "height": 440,
       "projection": {
         "type": "conicEqualArea",
@@ -216,7 +216,7 @@
         {
           "mark": {
             "type": "text",
-            "fontSize": 12,
+            "fontSize": 11,
             "fontWeight": 700,
             "dy": 7
           },
@@ -244,7 +244,7 @@
         {
           "mark": {
             "type": "text",
-            "fontSize": 10,
+            "fontSize": 11,
             "dy": -7
           },
           "encoding": {
@@ -277,7 +277,7 @@
         },
         "subtitle": "Dashed line = the year you are comparing with"
       },
-      "width": 478,
+      "width": 440,
       "height": 440,
       "data": {
         "url": "data/sector_share_by_state_year.csv",

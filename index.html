@@ -6,18 +6,16 @@
   <title>School Enrolments 2006–2025</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Type: Instrument Serif for titles; IBM Plex Sans for all content, subtitles, labels and charts -->
+  <!-- Type: Instrument Serif for page headings and big figures; IBM Plex Sans for all content and charts, including chart titles -->
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=2">
+  <link rel="stylesheet" href="css/style.css?v=13">
   <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
-  <!-- Lucide: open-source line icons (ISC licence). <i data-lucide="name"> becomes an icon. -->
-  <script src="https://unpkg.com/lucide@0.344.0/dist/umd/lucide.min.js"></script>
 </head>
 <body>
 
-  <!-- hero: asymmetric. Title, headline figure and intro on the left, a printed photo on the right. -->
+  <!-- hero: two columns. Title, headline figure and intro on the left, a printed photo on the right. -->
   <header class="hero" id="top">
     <div class="wrap hero-grid">
       <div class="hero-text">
@@ -44,14 +42,13 @@
     </div>
   </header>
 
-  <!-- chapter: label in the left margin, heading, then indented text. Charts break out to full width. -->
+  <!-- chapter: heading, then two columns of text. Charts run full width or sit beside text. -->
   <section class="chapter" id="trend">
     <div class="wrap">
       <header class="chapter-head">
-        <p class="label"><i data-lucide="users"></i> 01 / Sectors</p>
         <h2>Every sector grew, but not at the same pace</h2>
       </header>
-      <!-- lede: two indented text columns, about 10 words per line -->
+      <!-- lede: two text columns, about 10 words per line -->
       <div class="lede">
         <!-- gov / ind / cat: sector names in the chart colours -->
         <p>Between 2006 and 2025, school enrolments rose by 23%, and every sector gained students. <span class="gov">Government schools</span> still added the most, about 343,000. But <span class="ind">Independent schools</span> grew four times as fast: up 62%, against 22% for <span class="cat">Catholic schools</span> and 15% for <span class="gov">government schools</span>.</p>
@@ -78,7 +75,6 @@
   <section class="chapter" id="independent">
     <div class="wrap">
       <header class="chapter-head">
-        <p class="label"><i data-lucide="landmark"></i> 02 / States and sectors</p>
         <h2>Independent schools are gaining ground everywhere</h2>
       </header>
       <div class="lede">
@@ -95,9 +91,9 @@
       <div class="row flip">
         <figure class="viz"><div id="v6" class="vis"></div><figcaption class="note"><b>Fig. 6</b> Light dot = 2015, dark dot = 2025. Source: ABS, Schools 2025.</figcaption></figure>
         <div class="text">
-          <p>Over the last decade the biggest gains came in New South Wales, up 3.6 percentage points, then Queensland (3.3) and Tasmania (3.1).</p>
+          <p>Over the last decade the biggest rise came in New South Wales, where the Independent share went from 13.0% to 16.6% of students. Queensland and Tasmania were close behind.</p>
           <p>The Northern Territory is the only place where the <span class="ind">Independent</span> share fell, from 16.1% to 14.8%.</p>
-          <p class="stat"><span class="num ind">+3.6 pts</span><span class="lbl">rise in the Independent share in New South Wales, the largest of any state</span></p>
+          <p class="stat"><span class="num ind">13% to 17%</span><span class="lbl">of New South Wales students at Independent schools, 2015 to 2025: the largest rise of any state</span></p>
         </div>
       </div>
     </div>
@@ -106,7 +102,6 @@
   <section class="chapter" id="year7">
     <div class="wrap">
       <header class="chapter-head">
-        <p class="label"><i data-lucide="backpack"></i> 03 / Year levels</p>
         <h2>Year 7 is when families switch sectors</h2>
       </header>
       <div class="lede">
@@ -114,7 +109,7 @@
           <p>Much of that shift happens at one moment: the move to high school. In 2025, 67% of Year 6 students were at <span class="gov">government schools</span>, but only 56% of Year 7 students.</p>
           <p>Following the same students from Year 6 in 2024 to Year 7 in 2025, <span class="gov">government schools</span> had about 37,500 fewer of them. <span class="cat">Catholic schools</span> gained about 17,000 and <span class="ind">Independent schools</span> about 23,000.</p>
         </div>
-        <p>In the chart, paler squares mean more students at Catholic and Independent schools. The pale band starts at Year 7 in every year, and it has deepened: the government share of Year 7 fell from 65% in 2006 to 56% in 2025. In Queensland and Western Australia, where the data counts Year 7 as primary school until 2014, there was almost no Year 7 drop in 2006.</p>
+        <p>This is not new. In every year since 2006, the government share has dropped at Year 7, and the drop has deepened: the government share of Year 7 fell from 65% in 2006 to 56% in 2025. In Queensland and Western Australia, where the data counts Year 7 as primary school until 2014, there was almost no Year 7 drop in 2006.</p>
       </div>
       <figure class="viz"><div id="v7" class="vis"></div><figcaption class="note"><b>Fig. 7</b> Each square = % of that year level at government schools. Choose a state to compare. Source: ABS, Schools 2025.</figcaption></figure>
     </div>
@@ -123,7 +118,6 @@
   <section class="chapter" id="states">
     <div class="wrap">
       <header class="chapter-head">
-        <p class="label"><i data-lucide="map"></i> 04 / States</p>
         <h2>Victoria, the ACT and the West grew fastest</h2>
       </header>
       <div class="lede">
@@ -151,16 +145,15 @@
   <section class="chapter" id="suburbs">
     <div class="wrap">
       <header class="chapter-head">
-        <p class="label"><i data-lucide="home"></i> 05 / Suburbs</p>
         <h2>Growth lives on the edge of our cities</h2>
       </header>
       <div class="lede">
-        <p>Within each state, growth is more uneven still. Of the 9,156 schools open in both 2015 and 2025, exactly half now have fewer students than a decade ago. The growth is concentrated on the outskirts of the capital cities.</p>
-        <p>Zoom to Melbourne and the darkest clusters sit in the outer west and south-east. In Tarneit, Good News Lutheran College has grown from 676 to 1,872 students since 2015.</p>
+        <p>Within each state, growth is more uneven still. Of the 9,156 schools open in both 2015 and 2025, exactly half now have fewer students than a decade ago. Together, those in major cities added about 225,000 students.</p>
+        <p>By contrast, schools in outer regional, remote and very remote areas lost about 12,900 students. Within the cities, the growth sits on the outskirts: in Melbourne, the fastest-growing schools cluster in the outer west and south-east.</p>
       </div>
-      <figure class="viz"><div id="v10" class="vis"></div><figcaption class="note"><b>Fig. 10</b> One circle per school: size = students in 2025, colour = change since 2015. Zoom to a city, filter by sector or search for a school. Source: ACARA school data, 2015 and 2025.</figcaption></figure>
+      <figure class="viz"><div id="v10" class="vis"></div><figcaption class="note"><b>Fig. 10</b> One circle per school: size = students in 2025, colour = change since 2015. Zoom to a city or filter by sector; hover a circle for the school. Source: ACARA school data, 2015 and 2025.</figcaption></figure>
       <div class="lede">
-        <p>Since 2015, 538 new schools have opened, and almost three in four are in a major city. Many new <span class="ind">Independent schools</span> are small, with a typical 75 students, so they hold only 36,500 of the 238,000 students at new schools.</p>
+        <p>Since 2015, 538 new schools have opened, and almost three in four are in a major city. Many new <span class="ind">Independent schools</span> are small: the typical one has 75 students, so together they hold only 36,500 of the 238,000 students at new schools.</p>
         <p class="stat"><span class="num">538</span><span class="lbl">new schools since 2015: <span class="gov">264 government</span>, <span class="ind">212 Independent</span> and <span class="cat">62 Catholic</span></span></p>
       </div>
       <figure class="viz"><div id="v11" class="vis"></div><figcaption class="note"><b>Fig. 11</b> One dot per new school. Click a sector in the legend to show only those schools. Source: ACARA school data, 2025.</figcaption></figure>
@@ -168,22 +161,21 @@
         <p>New schools are not all alike. A typical new primary school already has 425 students, well above the 252 at a typical older primary. New secondary and combined schools are still small.</p>
         <p class="stat"><span class="num">425 vs 252</span><span class="lbl">students at a typical new primary school, against a typical primary already open in 2015</span></p>
       </div>
-      <figure class="viz"><div id="v12" class="vis"></div><figcaption class="note"><b>Fig. 12</b> Higher curve = more schools of that size. Hover a dashed line for the typical size. Source: ACARA school data, 2015 and 2025.</figcaption></figure>
-      <div class="row flip">
-        <figure class="viz"><div id="v13" class="vis"></div><figcaption class="note"><b>Fig. 13</b> Choose a state to see its top council areas. Source: ACARA school data, 2015 and 2025.</figcaption></figure>
-        <div class="text">
+      <figure class="viz"><div id="v12" class="vis"></div><figcaption class="note"><b>Fig. 12</b> Hover a dashed line for the typical size and the number of schools. Source: ACARA school data, 2015 and 2025.</figcaption></figure>
+      <div class="lede">
+        <div>
           <p>Wyndham, in Melbourne's outer west, added 29,300 students. More than half of them, 17,200, are at schools that did not exist in 2015.</p>
           <p>Only the City of Brisbane added more. Nine of these 12 council areas are on the outer edges of Melbourne, Sydney and Brisbane.</p>
-          <p class="stat"><span class="num">17,200</span><span class="lbl">of Wyndham's 29,300 extra students are at schools that opened after 2015</span></p>
         </div>
+        <p class="stat"><span class="num">17,200</span><span class="lbl">of Wyndham's 29,300 extra students are at schools that opened after 2015</span></p>
       </div>
+      <figure class="viz"><div id="v13" class="vis"></div><figcaption class="note"><b>Fig. 13</b> Choose a state to see its top council areas. Source: ACARA school data, 2015 and 2025.</figcaption></figure>
     </div>
   </section>
 
   <section class="chapter" id="bush">
     <div class="wrap">
       <header class="chapter-head">
-        <p class="label"><i data-lucide="mountain"></i> 06 / Remoteness</p>
         <h2>Beyond the cities, government schools carry the load</h2>
       </header>
       <div class="row">
@@ -192,37 +184,20 @@
           <p>They teach 62% of students in major cities and inner regional areas, 69% in outer regional areas, 76% in remote areas and 88% in very remote areas.</p>
           <p class="stat"><span class="num gov">88%</span><span class="lbl">of very remote students attend a government school, against 62% in major cities</span></p>
         </div>
-        <figure class="viz"><div id="v14" class="vis"></div><figcaption class="note"><b>Fig. 14</b> Full-time equivalent students. Choose a state to compare. Source: ABS, Schools 2025.</figcaption></figure>
+        <figure class="viz"><div id="v14" class="vis"></div><figcaption class="note"><b>Fig. 14</b> Full-time equivalent: a part-time student counts as part of one student. Choose a state to compare. Source: ABS, Schools 2025.</figcaption></figure>
       </div>
-    </div>
-  </section>
-
-  <!-- summary: printed in reverse (paper on ink), the five takeaways as a numbered list -->
-  <section class="chapter summary" id="summary">
-    <div class="wrap">
-      <header class="chapter-head">
-        <p class="label"><i data-lucide="compass"></i> In short</p>
-        <h2>What it adds up to</h2>
-      </header>
-      <p class="intro">The national total of 767,000 extra students hides two shifts: towards Independent schools, and towards the edges of the biggest cities.</p>
-      <ol class="takeaways">
-        <li><b>Independent schools grew fastest.</b> Up 62% since 2006, they now teach 17 in every 100 students, up from 13.</li>
-        <li><b>Year 7 is the turning point.</b> The government share falls from 67% in Year 6 to 56% in Year 7.</li>
-        <li><b>Victoria took the most growth.</b> It added 148,000 students between 2015 and 2025, a third of the national rise.</li>
-        <li><b>The suburbs are where it lands.</b> Half of all schools lost students, while Wyndham added nearly 30,000.</li>
-        <li><b>Remote Australia relies on government schools.</b> They teach 88% of students in very remote areas.</li>
-      </ol>
     </div>
   </section>
 
   <footer>
     <div class="wrap">
-      <p>Sources: ABS Schools 2025; ACARA Data Access Program.</p>
-      <p>Photo: Ivan Aleksic, <a href="https://unsplash.com/photos/empty-classroom-with-desks-and-chalkboard-PDRFeeDniCk">Unsplash</a> (Unsplash License). Icons: Lucide.</p>
+      <p>Sources: <a href="https://www.abs.gov.au/statistics/people/education/schools/latest-release">Australian Bureau of Statistics, Schools 2025</a> (students by state, sector, year level and remoteness); <a href="https://acara.edu.au/contact-us/acara-data-access">ACARA Data Access Program</a> (Australian Curriculum, Assessment and Reporting Authority; school profiles and locations, 2015 and 2025).</p>
+      <p>Photo: Ivan Aleksic, <a href="https://unsplash.com/photos/empty-classroom-with-desks-and-chalkboard-PDRFeeDniCk">Unsplash</a> (Unsplash License).</p>
+      <p>AI acknowledgement: Claude (Anthropic) was used to help write the code, clean the data and edit the text.</p>
       <p>By William Koo, October 2026.</p>
     </div>
   </footer>
 
-  <script src="js/main.js?v=2"></script>
+  <script src="js/main.js?v=14"></script>
 </body>
 </html>

@@ -46,7 +46,7 @@
     },
     {
       "transform": [{"filter": "datum.s_order === 0 && datum.state_pct > 0.035"}],
-      "mark": {"type": "text", "baseline": "bottom", "dy": -4, "fontWeight": 600, "fontSize": 12},
+      "mark": {"type": "text", "baseline": "bottom", "dy": -4, "fontWeight": 600, "fontSize": 11},
       "encoding": {"x": {"field": "x_mid", "type": "quantitative"}, "y": {"datum": 1},
                    "text": {"field": "state_abbr"}}
     },
@@ -63,22 +63,22 @@
                       "y": {"field": "call_y", "type": "quantitative"}}},
         {"mark": {"type": "point", "shape": "triangle-left", "filled": true, "size": 40, "color": "#161513", "opacity": 1},
          "encoding": {"x": {"field": "x_mid", "type": "quantitative"}, "y": {"field": "call_y", "type": "quantitative"}}},
-        {"mark": {"type": "text", "align": "left", "baseline": "middle", "dx": 10, "fontWeight": 600, "fontSize": 12, "color": "#161513"},
+        {"mark": {"type": "text", "align": "left", "baseline": "middle", "dx": 10, "fontWeight": 600, "fontSize": 11, "color": "#161513"},
          "encoding": {"x": {"datum": 1}, "y": {"field": "call_y", "type": "quantitative"}, "text": {"field": "state_abbr"}}},
-        {"mark": {"type": "text", "align": "left", "baseline": "middle", "dx": 44, "fontWeight": 600, "fontSize": 12, "color": "#1a47c4"},
+        {"mark": {"type": "text", "align": "left", "baseline": "middle", "dx": 44, "fontWeight": 600, "fontSize": 11, "color": "#1a47c4"},
          "encoding": {"x": {"datum": 1}, "y": {"field": "call_y", "type": "quantitative"},
                       "text": {"field": "Government", "type": "quantitative", "format": ".0f"}}},
-        {"mark": {"type": "text", "align": "left", "baseline": "middle", "dx": 68, "fontWeight": 600, "fontSize": 12, "color": "#d42a7f"},
+        {"mark": {"type": "text", "align": "left", "baseline": "middle", "dx": 68, "fontWeight": 600, "fontSize": 11, "color": "#d42a7f"},
          "encoding": {"x": {"datum": 1}, "y": {"field": "call_y", "type": "quantitative"},
                       "text": {"field": "Catholic", "type": "quantitative", "format": ".0f"}}},
-        {"mark": {"type": "text", "align": "left", "baseline": "middle", "dx": 92, "fontWeight": 600, "fontSize": 12, "color": "#0899c0"},
+        {"mark": {"type": "text", "align": "left", "baseline": "middle", "dx": 92, "fontWeight": 600, "fontSize": 11, "color": "#0899c0"},
          "encoding": {"x": {"datum": 1}, "y": {"field": "call_y", "type": "quantitative"},
                       "text": {"field": "Independent", "type": "quantitative", "format": ".0f"}}}
       ]
     },
     {
       "transform": [{"filter": "datum.state_pct > 0.035"}],
-      "mark": {"type": "text", "baseline": "middle", "fontWeight": 600, "fontSize": 12},
+      "mark": {"type": "text", "baseline": "middle", "fontWeight": 600, "fontSize": 11},
       "encoding": {"x": {"field": "x_mid", "type": "quantitative"},
                    "y": {"field": "y_mid", "type": "quantitative"},
                    "text": {"field": "share_pct", "type": "quantitative", "format": ".0f"},

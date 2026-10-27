@@ -1,11 +1,11 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Share of students at government schools, by remoteness, 2025",
-    "subtitle": "Full-time equivalent students; government vs all other schools"
+    "text": "Government schools' share, by remoteness, 2025",
+    "subtitle": ["Government vs all other schools", "Part-time students count as part of one (full-time equivalent)"]
   },
   "width": "container",
-  "height": 230,
+  "height": 200,
   "config": {"view": {"stroke": null}},
   "data": {
     "url": "data/fte_by_remoteness_2025.csv",
@@ -62,7 +62,7 @@
         "tooltip": [
           {"field": "remoteness", "title": "Area"},
           {"field": "sector_label", "title": "Sector"},
-          {"field": "fte", "type": "quantitative", "title": "Students (FTE)", "format": ",.0f"},
+          {"field": "fte", "type": "quantitative", "title": "Students (full-time equivalent)", "format": ",.0f"},
           {"field": "share", "type": "quantitative", "title": "Share", "format": ".1%"}
         ]
       }

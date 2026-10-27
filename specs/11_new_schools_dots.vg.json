@@ -332,7 +332,7 @@
           "mark": {
             "type": "text",
             "dy": -11,
-            "fontSize": 12,
+            "fontSize": 11,
             "fontWeight": 700,
             "color": "#16150f",
             "clip": true
